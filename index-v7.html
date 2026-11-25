@@ -1,0 +1,2705 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Từ điển số đa phương tiện Tiếng Hà Tĩnh - VISEF 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Be Vietnam Pro', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        vintage: {
+                            50: '#fcfbfa',
+                            100: '#f5f2eb',
+                            200: '#e6ded1',
+                            300: '#d1c4b0',
+                            600: '#8c7a6b',
+                            700: '#6e5f52',
+                            800: '#4a3f35',
+                            900: '#2c251f',
+                        },
+                        terracotta: {
+                            DEFAULT: '#b85d39',
+                            dark: '#964828',
+                        },
+                        sage: {
+                            DEFAULT: '#7a8b75',
+                            light: '#eef2ed',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f5f2eb; color: #2c251f; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #e6ded1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #b5a48d; border-radius: 8px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-terracotta selection:text-white antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-vintage-50/95 backdrop-blur-md border-b border-vintage-300 shadow-sm">
+        <div class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2">
+            <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-gradient-to-tr from-terracotta to-amber-700 rounded-2xl flex items-center justify-center text-white shadow-md shadow-terracotta/20">
+                    <i class="fa-solid fa-book-bookmark text-lg sm:text-xl"></i>
+                </div>
+                <div class="truncate">
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-sm sm:text-xl font-bold font-serif text-terracotta truncate">Từ điển số Tiếng Hà Tĩnh</h1>
+                        <span id="cloudStatusDot" class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 flex-shrink-0" title="Trạng thái đồng bộ dữ liệu">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            <span class="hidden sm:inline" id="cloudStatusText">Sẵn sàng</span>
+                        </span>
+                    </div>
+                    <p class="text-[11px] sm:text-xs text-vintage-700 font-medium truncate">Bảo tồn phương ngữ & di sản văn hóa xứ Nghệ • VISEF</p>
+                </div>
+            </div>
+
+            <!-- Role Control & Action -->
+            <div class="flex items-center space-x-1.5 sm:space-x-3 flex-shrink-0">
+                <div class="flex items-center space-x-1.5 bg-vintage-200 px-2 sm:px-3 py-1.5 rounded-xl border border-vintage-300 text-[11px] sm:text-xs">
+                    <span id="roleLabel" class="hidden md:inline font-semibold text-vintage-800">Chế độ: Người dùng</span>
+                    <button type="button" onclick="toggleAdminMode()" id="adminToggleBtn" class="bg-vintage-800 text-vintage-50 px-2.5 py-1 rounded-lg font-bold hover:bg-vintage-900 transition cursor-pointer">Admin</button>
+                </div>
+                <div class="flex items-center gap-1.5 sm:gap-2">
+                    <button type="button" onclick="openAddModal()" class="inline-flex items-center space-x-1 sm:space-x-1.5 bg-terracotta hover:bg-terracotta-dark text-white text-[11px] sm:text-sm font-semibold px-2.5 sm:px-3.5 py-2 sm:py-2.5 rounded-xl shadow-sm transition active:scale-95 cursor-pointer">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        <span>Đóng góp</span>
+                    </button>
+                    <button type="button" onclick="openBatchModal()" class="inline-flex items-center space-x-1.5 bg-sage hover:bg-sage/80 text-white text-xs sm:text-sm font-semibold px-2.5 sm:px-3.5 py-2 sm:py-2.5 rounded-xl shadow-sm transition active:scale-95 cursor-pointer" title="Tải lên tệp chứa nhiều từ vựng">
+                        <i class="fa-solid fa-file-arrow-up"></i>
+                        <span class="hidden md:inline">Tải tệp từ</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Search Section -->
+    <section class="relative bg-gradient-to-b from-[#2c251f] via-[#4a3f35] to-[#3a3028] text-vintage-50 py-14 sm:py-16 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d1c4b0_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-3xl mx-auto text-center relative z-10 space-y-6">
+            <span class="inline-flex items-center space-x-2 bg-vintage-900/80 border border-vintage-700 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-amber-200">
+                <i class="fa-solid fa-feather text-amber-400"></i>
+                <span>Mô, tê, răng, rứa - Đậm đà hồn quê xứ Nghệ</span>
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-serif leading-tight">
+                Hơi thở mộc mạc từ <span class="text-amber-400 italic">miền đất gió Lào</span>
+            </h2>
+            <p class="text-sm sm:text-base text-vintage-200 max-w-xl mx-auto font-light">
+                Tra cứu kho tàng phương ngữ, ca dao tục ngữ, dân ca Ví giặm, hình ảnh di sản văn hóa và không gian giao tiếp đậm đà bản sắc Hà Tĩnh.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="pt-2 max-w-xl mx-auto">
+                <div class="relative flex items-center shadow-2xl rounded-2xl overflow-hidden bg-white p-2 border border-vintage-300">
+                    <span class="pl-3 text-vintage-600 text-lg">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="searchInput" oninput="filterDictionary()" placeholder="Tìm kiếm từ vựng, ý nghĩa, câu ca dao (VD: đọi, ngái, nỏ, mần...)" class="w-full py-2.5 px-3 text-vintage-900 text-sm placeholder-vintage-600/50 focus:outline-none">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full space-y-12">
+        
+        <!-- Admin Notification Banner -->
+        <div id="adminNoticeBar" class="hidden bg-amber-100 border-l-4 border-amber-600 p-4 rounded-r-2xl shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 flex-shrink-0 bg-amber-600 text-white rounded-xl flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-amber-900">Có từ vựng hoặc tư liệu văn hóa mới từ người dùng đang chờ bạn phê duyệt!</h4>
+                    <p class="text-xs text-amber-800">Truy cập bảng quản trị bên dưới để kiểm tra.</p>
+                </div>
+            </div>
+            <button type="button" onclick="scrollToAdminPanel()" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition self-end sm:self-auto cursor-pointer">Kiểm duyệt ngay</button>
+        </div>
+
+        <!-- Official Dictionary Section -->
+        <div>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 mb-6 border-b border-vintage-300 gap-3">
+                <div>
+                    <h3 class="text-xl font-bold font-serif text-vintage-900">Từ Điển Phương Ngữ & Ca Dao Tục Ngữ</h3>
+                    <p class="text-xs text-vintage-700">Lưu giữ kho tàng ngôn ngữ dân gian đặc trưng Hà Tĩnh</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span id="adminImageEditNotice" class="hidden text-xs bg-amber-100 text-amber-900 px-3 py-1 rounded-xl font-semibold border border-amber-300">
+                        <i class="fa-solid fa-shield-halved mr-1"></i> Đang ở chế độ Admin: Sửa & Xóa từ!
+                    </span>
+                    <span class="text-xs font-bold bg-vintage-200 px-3 py-1.5 rounded-xl text-vintage-800" id="resultCount">0 từ</span>
+                </div>
+            </div>
+
+            <div id="wordGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <div id="emptyState" class="hidden text-center py-16">
+                <div class="w-16 h-16 bg-vintage-200 rounded-full flex items-center justify-center mx-auto text-terracotta text-2xl mb-3">
+                    <i class="fa-solid fa-face-confused"></i>
+                </div>
+                <h4 class="text-base font-bold text-vintage-900 font-serif">Không tìm thấy từ vựng phương ngữ phù hợp</h4>
+                <p class="text-xs text-vintage-700 mt-1">Hãy thử tìm từ khóa khác hoặc đóng góp thêm từ mới vào kho tàng!</p>
+            </div>
+        </div>
+
+        <!-- SECTION: Video Giao Tiếp & Dân Ca Ví, Giặm -->
+        <section class="bg-vintage-50 border border-vintage-300 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-vintage-300 gap-4">
+                <div>
+                    <span class="bg-amber-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Không gian âm nhạc & đời sống</span>
+                    <h3 class="text-xl sm:text-2xl font-bold font-serif text-vintage-900 mt-1">Video Giao Tiếp Phương Ngữ & Dân Ca Ví, Giặm</h3>
+                    <p class="text-xs text-vintage-700">Trải nghiệm ngữ điệu nói hằng ngày và các làn điệu dân ca ví giặm phi vật thể.</p>
+                </div>
+                <div class="flex items-center space-x-2 flex-wrap gap-y-2">
+                    <button type="button" onclick="switchVideoTab('all')" id="tabVidAll" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-terracotta text-white shadow cursor-pointer">Tất cả</button>
+                    <button type="button" onclick="switchVideoTab('communication')" id="tabVidComm" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-vintage-200 text-vintage-800 hover:bg-vintage-300 cursor-pointer">Giao tiếp thường ngày</button>
+                    <button type="button" onclick="switchVideoTab('folksong')" id="tabVidSong" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-vintage-200 text-vintage-800 hover:bg-vintage-300 cursor-pointer">Dân ca Ví Giặm</button>
+                    
+                    <button type="button" onclick="openVideoModal()" class="bg-vintage-800 hover:bg-vintage-900 text-white text-xs font-bold px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5 sm:ml-2 cursor-pointer">
+                        <i class="fa-solid fa-upload"></i> Thêm video tư liệu
+                    </button>
+                </div>
+            </div>
+
+            <div id="videoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- SECTION: Trang Cộng Đồng & Góc Văn Hóa Hà Tĩnh -->
+        <section class="bg-vintage-50 border border-vintage-300 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-vintage-300 gap-4">
+                <div>
+                    <span class="bg-sage text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Góc di sản học đường</span>
+                    <h3 class="text-xl sm:text-2xl font-bold font-serif text-vintage-900 mt-1">Cộng Đồng & Di Sản Văn Hóa Hà Tĩnh</h3>
+                    <p class="text-xs text-vintage-700">Chia sẻ câu chuyện làng nghề, danh nhân văn hóa, di tích lịch sử và ký ức quê hương.</p>
+                </div>
+                <button type="button" onclick="openCommunityModal()" class="bg-terracotta hover:bg-terracotta-dark text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-pen-to-square"></i> Đăng bài viết văn hóa
+                </button>
+            </div>
+
+            <div id="communityFeedGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- Admin Approval & Content Management Panel -->
+        <section id="adminPanelSection" class="hidden bg-vintage-50 border-2 border-dashed border-terracotta/40 rounded-3xl p-6 sm:p-8 shadow-sm space-y-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-vintage-300 gap-4">
+                <div>
+                    <span class="bg-terracotta text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Quản trị hệ thống</span>
+                    <h3 class="text-xl font-bold font-serif text-vintage-900 mt-1">Bảng Phê Duyệt & Quản Trị Đóng Góp</h3>
+                    <p class="text-xs text-vintage-700">Duyệt nội dung mới và nhấn <b>Xuất web (index.html)</b> để đóng gói cố định toàn bộ dữ liệu vào tệp web.</p>
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <button type="button" onclick="openSyncConfigModal()" class="bg-sky-700 hover:bg-sky-800 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-sm cursor-pointer" title="Thiết lập kênh đồng bộ chung giữa Máy tính và Điện thoại">
+                        <i class="fa-solid fa-link mr-1"></i> Đồng bộ MT/ĐT
+                    </button>
+                    <button type="button" onclick="syncToCloud(true)" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Đồng bộ đám mây
+                    </button>
+                    <button type="button" onclick="exportStandaloneHTML()" class="bg-terracotta hover:bg-terracotta-dark text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-sm cursor-pointer" title="Tải về tệp index.html đã nhúng sẵn toàn bộ video và từ mới bên trong">
+                        <i class="fa-solid fa-code mr-1"></i> Xuất web (index.html)
+                    </button>
+                    <button type="button" onclick="exportDataJSON()" class="bg-sage hover:bg-sage/80 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-download mr-1"></i> Xuất JSON
+                    </button>
+                    <label class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-upload mr-1"></i> Nhập JSON
+                        <input type="file" id="importFile" accept=".json" onchange="importDataJSON(event)" class="hidden">
+                    </label>
+                    <span id="pendingCountBadge" class="bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">0 chờ duyệt</span>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold font-serif text-vintage-900 mb-3"><i class="fa-solid fa-clock-rotate-left mr-1 text-terracotta"></i> Danh sách chờ phê duyệt</h4>
+                <div id="pendingListContainer" class="space-y-4"></div>
+                <div id="noPendingMsg" class="text-center py-6 text-vintage-700 text-xs italic bg-vintage-100 rounded-2xl border border-vintage-200">
+                    Hiện không có đóng góp nào đang chờ phê duyệt.
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold font-serif text-vintage-900 mb-3"><i class="fa-solid fa-book mr-1 text-terracotta"></i> Quản lý & Xóa Từ vựng chính thức</h4>
+                <div id="adminWordListContainer" class="space-y-3 max-h-60 overflow-y-auto custom-scrollbar pr-2"></div>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold font-serif text-vintage-900 mb-3"><i class="fa-solid fa-video mr-1 text-amber-600"></i> Quản lý & Xóa Video tư liệu</h4>
+                <div id="adminVideoListContainer" class="space-y-3 max-h-60 overflow-y-auto custom-scrollbar pr-2"></div>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold font-serif text-vintage-900 mb-3"><i class="fa-solid fa-id-card mr-1 text-sage"></i> Quản lý & Xóa Bài viết văn hóa</h4>
+                <div id="adminCommunityListContainer" class="space-y-3 max-h-60 overflow-y-auto custom-scrollbar pr-2"></div>
+            </div>
+        </section>
+
+        <!-- Interactive Mini-Games Hub -->
+        <section class="bg-gradient-to-br from-vintage-800 to-vintage-900 text-vintage-50 rounded-3xl p-6 sm:p-10 shadow-xl border border-vintage-700">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="text-center space-y-3">
+                    <span class="bg-amber-400 text-vintage-900 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest">
+                        <i class="fa-solid fa-gamepad mr-1"></i> Sân chơi phương ngữ Gen Z
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-serif font-bold">Thử Thách Vốn Từ & Văn Hóa Xứ Nghệ</h3>
+                    <p class="text-xs sm:text-sm text-vintage-200">Trải nghiệm 3 trò chơi kiểm tra vốn từ phương ngữ Hà Tĩnh vô cùng hấp dẫn!</p>
+
+                    <div class="flex flex-wrap justify-center gap-2 pt-2">
+                        <button type="button" onclick="switchGameMode('multipleChoice')" id="tabMultipleChoice" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-terracotta text-white shadow cursor-pointer">1. Trắc nghiệm nghĩa từ</button>
+                        <button type="button" onclick="switchGameMode('fillBlank')" id="tabFillBlank" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-vintage-700 text-vintage-200 hover:bg-vintage-600 cursor-pointer">2. Điền phương ngữ</button>
+                        <button type="button" onclick="switchGameMode('unscramble')" id="tabUnscramble" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-vintage-700 text-vintage-200 hover:bg-vintage-600 cursor-pointer">3. Giải mã chữ cái</button>
+                    </div>
+                </div>
+
+                <div id="gameActiveBox" class="bg-vintage-50 text-vintage-900 rounded-2xl p-6 text-left shadow-lg border border-vintage-300"></div>
+            </div>
+        </section>
+
+        <!-- VISEF Research Project Overview -->
+        <section class="bg-vintage-50 border border-vintage-300 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+            <div class="max-w-3xl mx-auto text-center space-y-2">
+                <span class="bg-sage-light text-sage font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Đề tài Nghiên cứu Khoa học Kỹ thuật (VISEF)</span>
+                <h3 class="text-2xl font-serif font-bold text-vintage-900">Ý Nghĩa Khoa Học & Bảo Tồn Văn Hóa</h3>
+                <p class="text-xs sm:text-sm text-vintage-700 italic">"Giải pháp bảo tồn chủ động và phát huy giá trị phương ngữ Hà Tĩnh trong kỷ nguyên số"</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <div class="bg-vintage-100 p-6 rounded-2xl border border-vintage-300 space-y-3 shadow-sm">
+                    <h4 class="font-serif font-bold text-base text-terracotta flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> 1. Giá trị ngôn ngữ học
+                    </h4>
+                    <p class="text-vintage-800 text-xs sm:text-sm leading-relaxed">
+                        Phương ngữ Hà Tĩnh lưu giữ nhiều lớp từ cổ, vần điệu độc đáo và tư duy biểu đạt gắn liền với điều kiện địa lý, lịch sử của vùng đất gió Lào cát trắng. Đề tài hệ thống hóa kho tàng từ vựng để lưu truyền cho thế hệ học sinh mai sau.
+                    </p>
+                </div>
+
+                <div class="bg-vintage-100 p-6 rounded-2xl border border-vintage-300 space-y-3 shadow-sm">
+                    <h4 class="font-serif font-bold text-base text-terracotta flex items-center gap-2">
+                        <i class="fa-solid fa-seedling"></i> 2. Ứng dụng thực tiễn học đường
+                    </h4>
+                    <p class="text-vintage-800 text-xs sm:text-sm leading-relaxed">
+                        Xây dựng nền tảng số đa phương tiện giúp học sinh THPT trải nghiệm, học hỏi và gìn giữ bản sắc văn hóa quê hương một cách sinh động, hiện đại.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-vintage-900 text-vintage-200 py-8 border-t border-vintage-800 text-xs text-center mt-12">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p>© 2026 Từ điển số đa phương tiện Tiếng Hà Tĩnh • Đề tài KHKT (VISEF)</p>
+            <p class="text-vintage-400">Gìn giữ nét đẹp phương ngữ xứ Nghệ trong kỷ nguyên số.</p>
+        </div>
+    </footer>
+
+    <!-- Modal: Word Detail -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden bg-vintage-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-vintage-50 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-vintage-300 max-h-[90vh]">
+            <div class="relative h-48 bg-vintage-200">
+                <img id="modalImage" src="" alt="Minh họa" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/d1c4b0/4a3f35?text=Tiếng+Hà+Tĩnh'">
+                <div class="absolute inset-0 bg-gradient-to-t from-vintage-900/80 via-transparent to-transparent"></div>
+                <button type="button" onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="absolute bottom-4 left-6 right-6 flex items-end justify-between">
+                    <div>
+                        <span class="inline-block bg-terracotta text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider mb-1">Phương ngữ Hà Tĩnh</span>
+                        <h3 id="modalWord" class="text-3xl font-extrabold text-white font-serif">Đọi</h3>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button type="button" id="modalEditImgBtn" onclick="promptEditImageFromModal()" class="hidden w-10 h-10 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl flex items-center justify-center shadow-lg transition cursor-pointer" title="Sửa ảnh minh họa">
+                            <i class="fa-solid fa-pen text-xs"></i>
+                        </button>
+                        <button type="button" id="modalDeleteWordBtn" onclick="promptDeleteWordFromModal()" class="hidden w-10 h-10 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl flex items-center justify-center shadow-lg transition cursor-pointer" title="Xóa từ vựng này">
+                            <i class="fa-solid fa-trash text-xs"></i>
+                        </button>
+                        <button type="button" onclick="speakNativeWord()" class="w-11 h-11 bg-amber-400 hover:bg-amber-500 text-vintage-900 rounded-2xl flex items-center justify-center shadow-lg transition transform active:scale-95 cursor-pointer" title="Nghe phát âm chuẩn (Web Speech API)">
+                            <i class="fa-solid fa-volume-high text-base"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar flex-grow">
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-vintage-700/60 mb-1">Nghĩa tiếng phổ thông</h4>
+                    <p id="modalMeaning" class="text-lg font-bold text-vintage-900 font-serif">Cái bát ăn cơm</p>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-vintage-700/60 mb-1">Ngữ cảnh sinh hoạt thực tế</h4>
+                    <p id="modalContext" class="text-sm bg-vintage-100 border-l-4 border-terracotta p-3 rounded-r-xl text-vintage-900 italic">"Đưa cái đọi mạ múc canh..."</p>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-vintage-700/60 mb-1">Không gian Ca dao & Ví giặm</h4>
+                    <div id="modalPoetry" class="text-sm bg-amber-50 border border-amber-200 p-3.5 rounded-2xl text-amber-900 font-serif leading-relaxed"></div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-vintage-100 border-t border-vintage-200 flex justify-end">
+                <button type="button" onclick="closeModal()" class="bg-vintage-300 hover:bg-vintage-400 text-vintage-900 text-xs font-semibold px-5 py-2.5 rounded-xl transition cursor-pointer">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Add Single Word -->
+    <div id="contributeModal" class="fixed inset-0 z-50 hidden bg-vintage-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-vintage-50 w-full max-w-xl rounded-3xl shadow-2xl p-6 space-y-5 border border-vintage-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="flex items-center justify-between border-b border-vintage-200 pb-3">
+                <h3 class="text-lg font-bold font-serif text-vintage-900">Đóng góp từ phương ngữ mới</h3>
+                <button type="button" onclick="closeAddModal()" class="text-vintage-700 hover:text-vintage-900 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <form id="singleWordForm" onsubmit="submitNewWord(event)" class="space-y-3">
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900">
+                    <i class="fa-solid fa-circle-info mr-1"></i> Đóng góp của bạn sẽ được kiểm duyệt trước khi đưa lên từ điển chính thức.
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Từ địa phương Hà Tĩnh *</label>
+                    <input type="text" id="contribWord" required placeholder="VD: Rứa, tê, mần, đọi..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs focus:ring-2 focus:ring-terracotta focus:outline-none text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Nghĩa tiếng phổ thông *</label>
+                    <input type="text" id="contribMeaning" required placeholder="VD: Thế, kia, làm, bát ăn cơm..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs focus:ring-2 focus:ring-terracotta focus:outline-none text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Chọn ảnh minh họa từ thiết bị (hoặc dán URL)</label>
+                    <input type="file" id="contribImageFile" accept="image/*" class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs focus:outline-none text-vintage-900 mb-2">
+                    <input type="url" id="contribImage" placeholder="Hoặc dán link ảnh https://..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs focus:ring-2 focus:ring-terracotta focus:outline-none text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Ngữ cảnh sinh hoạt thực tế</label>
+                    <textarea id="contribContext" rows="2" placeholder="VD: Mần răng mà rứa..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs focus:ring-2 focus:ring-terracotta focus:outline-none text-vintage-900"></textarea>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Ca dao / Câu nói dân gian liên quan</label>
+                    <textarea id="contribPoetry" rows="2" placeholder="VD: Chưa nghe ví giặm chưa về..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs focus:ring-2 focus:ring-terracotta focus:outline-none text-vintage-900"></textarea>
+                </div>
+
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeAddModal()" class="bg-vintage-200 hover:bg-vintage-300 text-vintage-900 text-xs font-semibold px-4 py-2 rounded-xl transition cursor-pointer">Hủy</button>
+                    <button type="submit" class="bg-terracotta hover:bg-terracotta-dark text-white text-xs font-semibold px-4 py-2 rounded-xl shadow transition cursor-pointer">Gửi đóng góp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Batch Upload / Import Multiple Words from File -->
+    <div id="batchModal" class="fixed inset-0 z-50 hidden bg-vintage-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-vintage-50 w-full max-w-xl rounded-3xl shadow-2xl p-6 space-y-5 border border-vintage-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="flex items-center justify-between border-b border-vintage-200 pb-3">
+                <h3 class="text-lg font-bold font-serif text-vintage-900">Tải lên danh sách nhiều từ vựng (Từ tệp JSON)</h3>
+                <button type="button" onclick="closeBatchModal()" class="text-vintage-700 hover:text-vintage-900 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div class="space-y-4 text-xs text-vintage-800">
+                <div class="bg-sage-light border border-sage p-3.5 rounded-2xl space-y-2">
+                    <p class="font-bold text-vintage-900"><i class="fa-solid fa-file-code text-sage mr-1"></i> Hướng dẫn định dạng tệp JSON:</p>
+                    <p>Tải lên tệp `.json` chứa danh sách các từ vựng theo mẫu sau để hệ thống tự động thêm hàng loạt:</p>
+                    <pre class="bg-vintage-900 text-amber-200 p-2.5 rounded-xl overflow-x-auto font-mono text-[10px]">[
+  {
+    "word": "Mần",
+    "meaning": "Làm",
+    "context": "Đang mần chi rứa?",
+    "poetry": "Mạ hỡi mạ, chiều nay mần chi?",
+    "image": "https://images.unsplash.com/..."
+  }
+]</pre>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1.5">Chọn tệp JSON chứa danh sách từ vựng *</label>
+                    <input type="file" id="batchFileinput" accept=".json" class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2.5 text-xs text-vintage-900 cursor-pointer">
+                </div>
+
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeBatchModal()" class="bg-vintage-200 hover:bg-vintage-300 text-vintage-900 text-xs font-semibold px-4 py-2 rounded-xl transition cursor-pointer">Hủy</button>
+                    <button type="button" onclick="processBatchUpload()" class="bg-sage hover:bg-sage/80 text-white text-xs font-semibold px-5 py-2.5 rounded-xl shadow transition cursor-pointer">Nhập danh sách từ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Add New YouTube Video -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden bg-vintage-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-vintage-50 w-full max-w-xl rounded-3xl shadow-2xl p-6 space-y-5 border border-vintage-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="flex items-center justify-between border-b border-vintage-200 pb-3">
+                <h3 class="text-lg font-bold font-serif text-vintage-900">Thêm video tư liệu phương ngữ & dân ca</h3>
+                <button type="button" onclick="closeVideoModal()" class="text-vintage-700 hover:text-vintage-900 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <form id="videoForm" onsubmit="submitNewVideo(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Tiêu đề video *</label>
+                    <input type="text" id="vidTitle" required placeholder="VD: Trích đoạn dân ca Ví giặm xứ Nghệ..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Loại tư liệu *</label>
+                    <select id="vidCategory" class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none text-vintage-900">
+                        <option value="communication">Giao tiếp thường ngày</option>
+                        <option value="folksong">Dân ca Ví, Giặm</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Đường dẫn YouTube (URL) *</label>
+                    <input type="text" id="vidUrl" required placeholder="VD: https://www.youtube.com/watch?v=... hoặc link Shorts" class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Mô tả giá trị văn hóa</label>
+                    <textarea id="vidDesc" rows="2" placeholder="Ghi lại nét đặc sắc trong ngữ điệu hoặc làn điệu..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none text-vintage-900"></textarea>
+                </div>
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeVideoModal()" class="bg-vintage-200 text-vintage-900 text-xs font-semibold px-4 py-2.5 rounded-xl cursor-pointer">Hủy</button>
+                    <button type="submit" class="bg-terracotta text-white text-xs font-semibold px-5 py-2.5 rounded-xl shadow cursor-pointer">Gửi video lên</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Add New Community Post -->
+    <div id="communityModal" class="fixed inset-0 z-50 hidden bg-vintage-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-vintage-50 w-full max-w-xl rounded-3xl shadow-2xl p-6 space-y-5 border border-vintage-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="flex items-center justify-between border-b border-vintage-200 pb-3">
+                <h3 class="text-lg font-bold font-serif text-vintage-900">Đăng bài viết di sản & văn hóa Hà Tĩnh</h3>
+                <button type="button" onclick="closeCommunityModal()" class="text-vintage-700 hover:text-vintage-900 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="communityForm" onsubmit="submitNewCommunityPost(event)" class="space-y-3">
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Tiêu đề bài viết / Di sản *</label>
+                    <input type="text" id="commTitle" required placeholder="VD: Ký ức phiên chợ quê, Làng nghề truyền thống..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Tác giả / Học sinh thực hiện *</label>
+                    <input type="text" id="commAuthor" required placeholder="VD: Nguyễn Thị Hoa - Lớp 11..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Chọn ảnh bài viết từ thiết bị (hoặc dán URL)</label>
+                    <input type="file" id="commImageFile" accept="image/*" class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs text-vintage-900 mb-2">
+                    <input type="url" id="commImage" placeholder="Hoặc dán link https://..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs text-vintage-900">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Nội dung câu chuyện văn hóa *</label>
+                    <textarea id="commContent" rows="4" required placeholder="Chia sẻ cảm nhận, câu chuyện hoặc giá trị lịch sử văn hóa Hà Tĩnh..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2 text-xs text-vintage-900"></textarea>
+                </div>
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeCommunityModal()" class="bg-vintage-200 text-vintage-900 text-xs font-semibold px-4 py-2 rounded-xl cursor-pointer">Hủy</button>
+                    <button type="submit" class="bg-terracotta text-white text-xs font-semibold px-4 py-2 rounded-xl shadow cursor-pointer">Gửi bài đăng</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Sync Endpoint Configuration (MT <-> DT) -->
+    <div id="syncConfigModal" class="fixed inset-0 z-50 hidden bg-vintage-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-vintage-50 w-full max-w-lg rounded-3xl shadow-2xl p-6 space-y-4 border border-vintage-300">
+            <div class="flex items-center justify-between border-b border-vintage-200 pb-3">
+                <h3 class="text-lg font-bold font-serif text-vintage-900">Đồng bộ dữ liệu giữa Máy tính &amp; Điện thoại</h3>
+                <button type="button" onclick="closeSyncConfigModal()" class="text-vintage-700 hover:text-vintage-900 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="space-y-3 text-xs text-vintage-800">
+                <p class="bg-amber-50 border border-amber-200 p-3 rounded-xl leading-relaxed">
+                    Để <b>Máy tính</b> và <b>Điện thoại</b> đọc/ghi chung một kho dữ liệu trực tuyến, hãy đảm bảo cả hai dùng cùng <b>Endpoint URL</b> (hoặc mở trang có tham số <code class="bg-white px-1 py-0.5 rounded border">#sync=...</code>). Bạn có thể tạo kênh mới, kéo dữ liệu về hoặc đẩy dữ liệu hiện tại lên.
+                </p>
+                <div>
+                    <label class="block text-[10px] font-bold text-vintage-800 uppercase mb-1">Endpoint đồng bộ hiện tại</label>
+                    <input type="url" id="syncEndpointInput" placeholder="https://..." class="w-full bg-vintage-100 border border-vintage-300 rounded-xl px-3.5 py-2.5 text-xs text-vintage-900 focus:ring-2 focus:ring-terracotta focus:outline-none">
+                </div>
+                <div class="flex flex-wrap gap-2 pt-1">
+                    <button type="button" onclick="generateFreshCloudEndpoint()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl cursor-pointer">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Tạo kênh mới
+                    </button>
+                    <button type="button" onclick="pullFromCloudNow()" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl cursor-pointer">
+                        <i class="fa-solid fa-cloud-arrow-down mr-1"></i> Kéo dữ liệu về
+                    </button>
+                    <button type="button" onclick="copyShareableSyncLink()" class="bg-sky-700 hover:bg-sky-800 text-white text-xs font-bold px-3.5 py-2 rounded-xl cursor-pointer">
+                        <i class="fa-solid fa-copy mr-1"></i> Sao chép link #sync
+                    </button>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2 border-t border-vintage-200">
+                <button type="button" onclick="closeSyncConfigModal()" class="bg-vintage-200 hover:bg-vintage-300 text-vintage-900 text-xs font-semibold px-4 py-2 rounded-xl cursor-pointer">Đóng</button>
+                <button type="button" onclick="saveSyncConfigAndSync()" class="bg-terracotta hover:bg-terracotta-dark text-white text-xs font-bold px-4 py-2 rounded-xl shadow cursor-pointer">Lưu &amp; Đồng bộ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-vintage-900 text-vintage-50 px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-2 text-xs font-medium border border-vintage-700 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-amber-400 text-base"></i>
+        <span id="toastMsg">Thành công!</span>
+    </div>
+
+    <!-- Application & Cloud Sync Script -->
+    <script>
+        // --- 1. CẤU HÌNH ĐỒNG BỘ ĐA THIẾT BỊ (MÁY TÍNH <-> ĐIỆN THOẠI) ---
+        const APP_SYNC_CHANNEL = "hatinh_visef_2026_realtime_sync";
+        const DEFAULT_CLOUD_ENDPOINT = "https://jsonblob.com/api/jsonBlob/019d3e8f-8b42-7f90-a61e-5d902c78a14b";
+
+        function resolveInitialEndpoint() {
+            try {
+                if (window.location.hash && window.location.hash.includes("sync=")) {
+                    const hashSync = decodeURIComponent(window.location.hash.split("sync=")[1].split("&")[0].trim());
+                    if (hashSync.startsWith("http")) {
+                        localStorage.setItem("haTinh_customCloudUrl", hashSync);
+                        return hashSync;
+                    }
+                }
+                const params = new URLSearchParams(window.location.search || "");
+                const qSync = params.get("sync");
+                if (qSync && qSync.trim().startsWith("http")) {
+                    localStorage.setItem("haTinh_customCloudUrl", qSync.trim());
+                    return qSync.trim();
+                }
+                const savedUrl = localStorage.getItem("haTinh_customCloudUrl");
+                if (savedUrl && savedUrl.trim().startsWith("http")) {
+                    return savedUrl.trim();
+                }
+            } catch (e) {}
+            return DEFAULT_CLOUD_ENDPOINT;
+        }
+
+        let ACTIVE_CLOUD_API = resolveInitialEndpoint();
+        let broadcastChannel = null;
+        try {
+            if ("BroadcastChannel" in window) {
+                broadcastChannel = new BroadcastChannel(APP_SYNC_CHANNEL);
+            }
+        } catch (e) {}
+
+        // --- 2. DỮ LIỆU GỐC ĐÃ TỔNG HỢP (EMBEDDED DATA) ---
+        /* EMBEDDED_DATA_START */
+        const EMBEDDED_SEED_DATA = {
+            "version": 4,
+            "initialized": true,
+            "updatedAt": "2026-11-25T15:37:00.000Z",
+            "officialWords": [
+                        {
+                                    "id": 1,
+                                    "word": "Đọi",
+                                    "meaning": "Cái bát ăn cơm.",
+                                    "context": "Đưa cái đọi mạ múc canh cu nớ ăn cơm nựa!",
+                                    "poetry": "Chén tình nghĩa đượm tình quê / Bát cơm dẻo thơm, đọi canh chan chứa tình người.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 2,
+                                    "word": "Ngái",
+                                    "meaning": "Xa, khoảng cách địa lý xa xôi.",
+                                    "context": "Nhà ở ngái rứa mà chiều mô nỏ rảnh rỗi ghé chơi.",
+                                    "poetry": "Đường về xứ Nghệ dẫu ngái xa / Có câu ví giặm đậm đà lòng ai.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 3,
+                                    "word": "Nỏ",
+                                    "meaning": "Không (Phó từ phủ định đặc trưng xứ Nghệ).",
+                                    "context": "Hắn có biết chi mô mà hỏi, nỏ nói năng chi cả.",
+                                    "poetry": "Nỏ qua được gió Lào cát trắng / Mà thương nhau đến trọn vẹn cuộc đời.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 4,
+                                    "word": "Trốc cúi",
+                                    "meaning": "Đầu gối.",
+                                    "context": "Đi ngã mô mà va cái trốc cúi vào bàn bầm tím cả.",
+                                    "poetry": "Mồ hôi rơi ướt đẫm trốc cúi gầy / Mạ gồng gánh nuôi con qua ngày giông bão.",
+                                    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 5,
+                                    "word": "Mấn",
+                                    "meaning": "Váy, trang phục truyền thống của phụ nữ xưa.",
+                                    "context": "Mạ mặc cái mấn sồi đi hội làng từ sớm.",
+                                    "poetry": "Nón mê chiếc mấn buông lơi / Duyên quê xứ Nghệ trọn đời khó phai.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 6,
+                                    "word": "Mô, tê, răng, rứa",
+                                    "meaning": "Đâu, kìa, sao, thế (Bộ tứ đại từ & phó từ đặc trưng).",
+                                    "context": "Hỏi răng mà rứa, ở mô mà tê?",
+                                    "poetry": "Mô tê răng rứa đậm đà / Câu ví giặm hát mấy mà cho nguôi.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 7,
+                                    "word": "Mần",
+                                    "meaning": "Làm (hoạt động, công việc hằng ngày).",
+                                    "context": "Chiều ni đang mần chi rứa, ra đồng phụ mạ một tay.",
+                                    "poetry": "Dù ai mần lụng bốn phương / Nhớ về Hà Tĩnh vấn vương tấc lòng.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 8,
+                                    "word": "Mạ",
+                                    "meaning": "Mẹ (cách gọi thân thương của người dân Hà Tĩnh).",
+                                    "context": "Mạ dặn đi mô cũng nhớ mặc áo ấm kẻo gió lạnh.",
+                                    "poetry": "Gió Lào thổi rát bờ tre / Thương mạ tần tảo sớm trưa một mình.",
+                                    "image": "https://images.unsplash.com/photo-1511895468321-4335d4f7e6c3?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 9,
+                                    "word": "Bọ",
+                                    "meaning": "Bố, cha.",
+                                    "context": "Bọ đi làm đồng về sớm rứa bọ?",
+                                    "poetry": "Công bọ như núi Thái Sơn / Dạy con giữ trọn vẹn ơn nghĩa thầy.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 10,
+                                    "word": "O",
+                                    "meaning": "Cô, dì (chị hoặc em gái của bố).",
+                                    "context": "O về thăm nhà dịp giỗ họ, cả nhà ai nấy đều vui.",
+                                    "poetry": "Thương o vất vả sớm chiều / Lo toan việc họ bao điều nặng vai.",
+                                    "image": "https://images.unsplash.com/photo-1511895468321-4335d4f7e6c3?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 11,
+                                    "word": "Chú",
+                                    "meaning": "Bác trai hoặc chú (em trai của bố).",
+                                    "context": "Chú sang phụ dựng lại giàn mướp sau hè.",
+                                    "poetry": "Tiếng chú gọi nhau đầu ngõ / Tình làng nghĩa xóm đượm nồng quê hương.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 12,
+                                    "word": "Mự",
+                                    "meaning": "Thím (vợ của chú).",
+                                    "context": "Mự nấu nồi chè đỗ đen mát rượi cho mấy đứa nhỏ.",
+                                    "poetry": "Khéo tay như mự quê ta / Bát chè ngọt mát đậm đà hương quê.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 13,
+                                    "word": "Cậu",
+                                    "meaning": "Cậu (em trai của mẹ).",
+                                    "context": "Cậu gửi thùng cam bù từ Hương Sơn ra cho cháu.",
+                                    "poetry": "Ngọt lành cam đất Hương Sơn / Quà cậu gửi gắm vẹn tròn yêu thương.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 14,
+                                    "word": "Mợ",
+                                    "meaning": "Mợ (vợ của cậu).",
+                                    "context": "Mợ gói mấy đòn bánh gai gửi lên cho anh em ngoài phố.",
+                                    "poetry": "Bánh gai đen bóng thơm mùi lá / Nhớ mợ tần tảo sớm hôm quê nhà.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 15,
+                                    "word": "Bầy tui",
+                                    "meaning": "Chúng tôi, nhóm của chúng tôi.",
+                                    "context": "Bầy tui đang tập văn nghệ chuẩn bị cho ngày hội trường.",
+                                    "poetry": "Bầy tui cùng hát câu hò / Gửi trao khát vọng tuổi thơ quê mình.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 16,
+                                    "word": "Bầy mi",
+                                    "meaning": "Các bạn, nhóm của các bạn.",
+                                    "context": "Bầy mi chiều ni có đi đá bóng ngoài sân không?",
+                                    "poetry": "Bầy mi rủ nhau ra đồng / Ngắm chiều buông xuống rực hồng núi sông.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 17,
+                                    "word": "Bầy hắn",
+                                    "meaning": "Bọn họ, nhóm người kia.",
+                                    "context": "Bầy hắn đang ngồi hóng mát dưới gốc đa đầu làng.",
+                                    "poetry": "Bầy hắn cười vang bên giếng nước / Tuổi thơ êm ả giữa miền quê.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 18,
+                                    "word": "Hắn",
+                                    "meaning": "Anh ấy, chị ấy, nó (đại từ ngôi thứ ba số ít).",
+                                    "context": "Hắn học giỏi môn Toán lắm, kỳ ni lại được chọn đi thi.",
+                                    "poetry": "Hắn đi xa xứ lập thân / Vẫn thương câu hát ân cần mẹ ru.",
+                                    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 19,
+                                    "word": "Chi",
+                                    "meaning": "Gì (đại từ nghi vấn).",
+                                    "context": "Sáng ni ăn chi rứa, có cần bọ nấu thêm chi không?",
+                                    "poetry": "Dẫu đi mô cũng nhớ về / Hỏi thăm câu chuyện quê nghè có chi.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 20,
+                                    "word": "Răng",
+                                    "meaning": "Sao, tại sao.",
+                                    "context": "Răng hôm ni trời nắng gắt mà gió lại thổi mạnh rứa?",
+                                    "poetry": "Hỏi răng thương nhớ khôn nguôi / Nghe câu ví giặm bùi ngùi lòng ai.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 21,
+                                    "word": "Rứa",
+                                    "meaning": "Thế, vậy.",
+                                    "context": "Thì ra chuyện là rứa, bữa ni mới tỏ tường.",
+                                    "poetry": "Đất cày lên sỏi đá / Mà lòng người nặng nghĩa rứa sao.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 22,
+                                    "word": "Mô",
+                                    "meaning": "Đâu.",
+                                    "context": "Đi mô thì đi, nhớ về đúng bữa cơm chiều nghen.",
+                                    "poetry": "Ai về Hà Tĩnh cùng ta / Non Hồng nước biếc bao la tình người.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 23,
+                                    "word": "Tê",
+                                    "meaning": "Kìa, đằng kia.",
+                                    "context": "Nhìn lên đồi tê, đàn bò đang gặm cỏ xanh rì.",
+                                    "poetry": "Đồi xanh gió mát lộng về / Nhìn sang bên tê rặng tre rì rào.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 24,
+                                    "word": "Ni",
+                                    "meaning": "Này, đây.",
+                                    "context": "Cầm lấy quyển vở ni mà ghi chép cho cẩn thận.",
+                                    "poetry": "Chiều ni gió thổi ngang đê / Nghe lòng xao xuyến câu thề năm xưa.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 25,
+                                    "word": "Nựa",
+                                    "meaning": "Nữa.",
+                                    "context": "Ăn thêm bát cơm nựa cho no bụng rồi hãy học bài.",
+                                    "poetry": "Thương nhau cắn hạt muối đôi / Thương nhau cho trọn một đời nựa thôi.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 26,
+                                    "word": "Chừ",
+                                    "meaning": "Bây giờ.",
+                                    "context": "Chừ đã sang thu, gió heo may bắt đầu thổi nhẹ.",
+                                    "poetry": "Chừ đây xa cách phương trời / Nhớ câu ví giặm trọn đời không quên.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 27,
+                                    "word": "Hồi nãy",
+                                    "meaning": "Lúc nãy.",
+                                    "context": "Hồi nãy o vừa ghé qua để lại giỏ bánh cho bọn trẻ.",
+                                    "poetry": "Hồi nãy còn nghe tiếng cười / Giờ nghe gió thoảng bồi hồi nhớ quê.",
+                                    "image": "https://images.unsplash.com/photo-1511895468321-4335d4f7e6c3?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 28,
+                                    "word": "Bữa ni",
+                                    "meaning": "Hôm nay.",
+                                    "context": "Bữa ni trời quang mây tạnh, thuận lợi cho việc thu hoạch.",
+                                    "poetry": "Bữa ni nắng đẹp chan hòa / Quê hương rạng rỡ bài ca nghĩa tình.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 29,
+                                    "word": "Bữa qua",
+                                    "meaning": "Hôm qua.",
+                                    "context": "Bữa qua cơn mưa rào làm mát cả khoảng sân gạch.",
+                                    "poetry": "Bữa qua mưa đổ mái hiên / Bữa ni nắng ấm dịu hiền đồng xanh.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 30,
+                                    "word": "Bữa mai",
+                                    "meaning": "Ngày mai.",
+                                    "context": "Bữa mai bọn mình cùng lên thư viện tra cứu tài liệu.",
+                                    "poetry": "Bữa mai trời lại hửng hồng / Ươm mầm xanh biếc trên đồng quê hương.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 31,
+                                    "word": "Khuỷa",
+                                    "meaning": "Xa, khuất tầm nhìn.",
+                                    "context": "Đoàn người đi khuỷa sau rặng phi lao ven biển.",
+                                    "poetry": "Bóng thuyền khuỷa dạng chân mây / Gửi theo con sóng những ngày thương nhau.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 32,
+                                    "word": "Rấp",
+                                    "meaning": "Sắp, gần tới.",
+                                    "context": "Rấp đến mùa gặt rồi, ngoài đồng lúa đã ngả vàng.",
+                                    "poetry": "Rấp mùa gặt hái rộn ràng / Hương lúa chín tỏa ngập tràn xóm thôn.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 33,
+                                    "word": "Chộ",
+                                    "meaning": "Thấy, nhìn thấy.",
+                                    "context": "Đứng trên đỉnh núi có thể chộ rõ dòng sông La uốn lượn.",
+                                    "poetry": "Ngước nhìn lên đỉnh non cao / Chộ dòng sông biếc dạt dào tình quê.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 34,
+                                    "word": "Ngó",
+                                    "meaning": "Nhìn, ngắm.",
+                                    "context": "Ngó ra ngoài hiên thấy hoa cau rụng trắng gốc.",
+                                    "poetry": "Ngó sang vườn cũ trưa hè / Hoa cau rụng trắng bờ tre đầu làng.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 35,
+                                    "word": "Dòm",
+                                    "meaning": "Nhìn trộm hoặc nhìn kỹ.",
+                                    "context": "Dòm qua khe cửa thấy mấy bạn đang chăm chú làm bài.",
+                                    "poetry": "Dòm xem trang sách mở ra / Bao nhiêu nét đẹp quê nhà hiện lên.",
+                                    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 36,
+                                    "word": "Tỉa",
+                                    "meaning": "Nói kháy, châm chọc nhẹ nhàng.",
+                                    "context": "Đừng có tỉa nhau chuyện cũ nữa, lo học cho tốt đi.",
+                                    "poetry": "Lời qua tiếng lại tỉa nhau / Vui cười hòa thuận trước sau một nhà.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 37,
+                                    "word": "Trách",
+                                    "meaning": "Trách móc, phàn nàn.",
+                                    "context": "Chẳng ai trách móc chi mô, chỉ mong con học hành nên người.",
+                                    "poetry": "Đừng trách nắng mưa miền Trung / Thương nhau chia sẻ tấm lòng thủy chung.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 38,
+                                    "word": "Dặn",
+                                    "meaning": "Dặn dò, căn dặn.",
+                                    "context": "Mạ dặn đi học nhớ mang áo mưa phòng khi trái gió.",
+                                    "poetry": "Lời mạ dặn dò thiết tha / Hành trang theo bước đi xa muôn trùng.",
+                                    "image": "https://images.unsplash.com/photo-1511895468321-4335d4f7e6c3?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 39,
+                                    "word": "Hấn",
+                                    "meaning": "Biến thể ngữ âm của 'hắn' (anh ấy, chị ấy, nó).",
+                                    "context": "Hấn chạy nhanh thật, thoáng cái đã tới cổng trường.",
+                                    "poetry": "Hấn đi qua cầu tre nhỏ / Để lại bao nỗi nhớ mong.",
+                                    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 40,
+                                    "word": "Rặt",
+                                    "meaning": "Toàn là, toàn bộ.",
+                                    "context": "Trong rổ rặt là cam chín mọng và bưởi thơm.",
+                                    "poetry": "Vườn nhà rặt trái ngọt lành / Đón chào khách quý thăm quanh xóm làng.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 41,
+                                    "word": "S sệt",
+                                    "meaning": "Rất giống, y hệt.",
+                                    "context": "Nét chữ của em viết s sệt nét chữ của bọ ngày trước.",
+                                    "poetry": "Giọng nói s sệt quê hương / Nghe sao ấm áp vấn vương tấc lòng.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 42,
+                                    "word": "Cộc cằn",
+                                    "meaning": "Thô ráp, mộc mạc, thẳng tính.",
+                                    "context": "Người xứ Nghệ ăn nói cộc cằn nhưng tấm lòng rất chân thành.",
+                                    "poetry": "Lời quê tuy mộc mạc thôi / Nhưng mà sâu nặng trọn đời thương nhau.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 43,
+                                    "word": "Đằm thắm",
+                                    "meaning": "Dịu dàng, sâu sắc, giàu tình cảm.",
+                                    "context": "Làn điệu ví giặm đằm thắm đi vào lòng người nghe.",
+                                    "poetry": "Câu hát ví giặm đằm thắm / Gợi bao thương nhớ quê nhà.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 44,
+                                    "word": "Tần tảo",
+                                    "meaning": "Chịu khó, làm việc vất vả liên tục.",
+                                    "context": "Hình ảnh người phụ nữ tần tảo nuôi con khôn lớn.",
+                                    "poetry": "Tần tảo sớm hôm nuôi con / Nghĩa sâu biển rộng, ơn non cao vời.",
+                                    "image": "https://images.unsplash.com/photo-1511895468321-4335d4f7e6c3?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 45,
+                                    "word": "Vất vả",
+                                    "meaning": "Khó nhọc, gian truân.",
+                                    "context": "Những mùa mưa lũ vất vả càng gắn kết tình làng nghĩa xóm.",
+                                    "poetry": "Vượt qua vất vả gian nan / Quê hương đổi mới ngập tràn niềm vui.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 46,
+                                    "word": "Lận đận",
+                                    "meaning": "Long đong, trắc trở.",
+                                    "context": "Trải qua bao năm lận đận, nay cuộc sống đã khấm khá hơn.",
+                                    "poetry": "Dẫu cho lận đận tháng năm / Giữ tròn chữ tín, giữ tâm sáng ngời.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 47,
+                                    "word": "Đon đả",
+                                    "meaning": "Niềm nở, nhiệt tình đón tiếp.",
+                                    "context": "Chủ nhà đon đả mời khách vào uống chén nước chè xanh.",
+                                    "poetry": "Chén chè xanh đượm tình quê / Đon đả mời khách đi về có nhau.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 48,
+                                    "word": "Nồng hậu",
+                                    "meaning": "Chân thành, ấm áp tình cảm.",
+                                    "context": "Tình người Hà Tĩnh nồng hậu như bát nước chè tươi.",
+                                    "poetry": "Nghĩa tình nồng hậu xứ ta / Đi xa nhớ mãi mái nhà thân thương.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 49,
+                                    "word": "Bùi ngùi",
+                                    "meaning": "Xúc động, nghẹn ngào pha chút buồn thương.",
+                                    "context": "Chia tay mái trường cấp ba, ai cũng thấy bùi ngùi.",
+                                    "poetry": "Bùi ngùi giây phút chia xa / Nhớ trường nhớ bạn, nhớ nhà nhớ quê.",
+                                    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 50,
+                                    "word": "Xao xuyến",
+                                    "meaning": "Rung động nhẹ nhàng, bâng khuâng.",
+                                    "context": "Chiều thu nghe tiếng sáo diều lòng chợt xao xuyến.",
+                                    "poetry": "Gió thu xao xuyến hàng cây / Nhớ thương dâng ngập những ngày xa quê.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 51,
+                                    "word": "Bâng khuâng",
+                                    "meaning": "Man mác buồn, suy tư khó tả.",
+                                    "context": "Đứng trước ngã ba sông, lòng bâng khuâng nhớ về quá khứ.",
+                                    "poetry": "Bâng khuâng đứng giữa chiều tà / Nghe vang vọng khúc dân ca quê mình.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 52,
+                                    "word": "Chắt chiu",
+                                    "meaning": "Gom góp, giữ gìn từng chút một.",
+                                    "context": "Chắt chiu từng đồng tiền lẻ để con có sách vở đến trường.",
+                                    "poetry": "Chắt chiu từng hạt mồ hôi / Dựng xây tổ ấm cho đời thêm vui.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 53,
+                                    "word": "Gồng gánh",
+                                    "meaning": "Cùng lúc gánh vác nhiều trách nhiệm nặng nề.",
+                                    "context": "Đôi vai gồng gánh cả gia đình qua những ngày khó khăn.",
+                                    "poetry": "Đôi vai gồng gánh nắng mưa / Nuôi con khôn lớn đến vừa trưởng thành.",
+                                    "image": "https://images.unsplash.com/photo-1511895468321-4335d4f7e6c3?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 54,
+                                    "word": "Quăng quật",
+                                    "meaning": "Làm việc nặng nhọc, dầm mưa dãi nắng.",
+                                    "context": "Thân cò quăng quật ngoài đồng để đổi lấy mùa vàng.",
+                                    "poetry": "Quăng quật giữa nắng gió Lào / Vẫn tươi nụ cười dạt dào niềm tin.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 55,
+                                    "word": "Đội nắng",
+                                    "meaning": "Đi hoặc làm việc dưới trời nắng gay gắt.",
+                                    "context": "Nông dân đội nắng chăm lúa cho kịp thời vụ.",
+                                    "poetry": "Đội nắng băng qua đồng xa / Gieo mầm hy vọng mượt mà tương lai.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 56,
+                                    "word": "Dầm mưa",
+                                    "meaning": "Đi hoặc làm việc dưới cơn mưa.",
+                                    "context": "Các bạn tình nguyện viên dầm mưa dọn dẹp đường làng.",
+                                    "poetry": "Dầm mưa giữ sạch xóm thôn / Góp công xây dựng quê hương giàu đẹp.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 57,
+                                    "word": "Lội bùn",
+                                    "meaning": "Đi trên lớp bùn đất lầy lội.",
+                                    "context": "Mùa cấy lúa, người dân lội bùn từ sáng tinh mơ.",
+                                    "poetry": "Lội bùn cấy những luống xanh / Cho mùa lúa trĩu hạt lành quê hương.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 58,
+                                    "word": "Cuốc đất",
+                                    "meaning": "Dùng cuốc xới đất canh tác.",
+                                    "context": "Buổi sớm ra vườn cuốc đất trồng rau sạch.",
+                                    "poetry": "Cuốc đất vun luống rau xanh / Đượm mùi đất mẹ ngọt lành hương quê.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 59,
+                                    "word": "Cấy lúa",
+                                    "meaning": "Trồng mạ xuống ruộng nước.",
+                                    "context": "Cả xóm rộn ràng mùa cấy lúa chiêm.",
+                                    "poetry": "Cấy lúa thẳng hàng xanh ngát / Ngát hương đồng nội quê ta.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 60,
+                                    "word": "Gặt lúa",
+                                    "meaning": "Cắt lúa chín đem về.",
+                                    "context": "Mùa gặt về, rơm vàng phơi đầy sân gạch.",
+                                    "poetry": "Gặt lúa vàng ươm đồng bãi / Vui mùa bội thu rạng rỡ nụ cười.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 61,
+                                    "word": "Đơm bông",
+                                    "meaning": "Cây lúa, cây hoa trổ bông.",
+                                    "context": "Lúa đang thì đơm bông, tỏa hương dịu nhẹ.",
+                                    "poetry": "Lúa đơm bông trắng đồng xa / Gửi hương thơm ngát bay xa muôn miền.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 62,
+                                    "word": "Trĩu quả",
+                                    "meaning": "Cành cây sai quả nặng trĩu.",
+                                    "context": "Vườn cam mùa thu cành nào cũng trĩu quả.",
+                                    "poetry": "Cam vàng trĩu quả bên đồi / Ngọt thơm vị đất, rạng ngời tình quê.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 63,
+                                    "word": "Rơm rạ",
+                                    "meaning": "Thân lúa khô sau khi gặt.",
+                                    "context": "Mùi rơm rạ phơi nắng gợi nhớ tuổi thơ êm đềm.",
+                                    "poetry": "Thơm lừng mùi rơm rạ khô / Ký ức tuổi thơ đọng mãi trong lòng.",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 64,
+                                    "word": "Sân gạch",
+                                    "meaning": "Sân lát gạch đỏ truyền thống ở vùng quê.",
+                                    "context": "Trẻ con nô đùa trên sân gạch mỗi buổi chiều mát.",
+                                    "poetry": "Trăng lên soi sáng sân gạch / Tiếng cười rộn rã quê nhà.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 65,
+                                    "word": "Bờ ao",
+                                    "meaning": "Đất đắp quanh ao nuôi cá.",
+                                    "context": "Ngồi hóng mát bên bờ ao nghe ếch nhái kêu.",
+                                    "poetry": "Bờ ao rợp bóng dừa xanh / Gió chiều thổi mát an lành tâm tư.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 66,
+                                    "word": "Giếng khơi",
+                                    "meaning": "Giếng nước truyền thống, nước trong và mát.",
+                                    "context": "Nước giếng khơi mát lạnh giúp xua tan cái nóng oi ả.",
+                                    "poetry": "Nước giếng khơi trong veo mát rượi / Giải khát trưa hè rực nắng quê hương.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 67,
+                                    "word": "Cổng làng",
+                                    "meaning": "Cổng xây vào làng, biểu tượng văn hóa cộng đồng.",
+                                    "context": "Cổng làng rêu phong lưu giữ bao dấu ấn lịch sử.",
+                                    "poetry": "Cổng làng cổ kính rêu phong / Đón người đi xa trở về thăm quê.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 68,
+                                    "word": "Bến đò",
+                                    "meaning": "Nơi đò cập bến qua sông.",
+                                    "context": "Bến đò ngang tấp nập khách qua lại mỗi sớm mai.",
+                                    "poetry": "Bến đò chiều buông lững lờ / Chở bao thương nhớ sang bờ quê hương.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 69,
+                                    "word": "Cầu tre",
+                                    "meaning": "Cầu làm bằng tre bắc qua mương, rạch.",
+                                    "context": "Bước chân khéo léo qua chiếc cầu tre lắc lẻo.",
+                                    "poetry": "Cầu tre lắt lẻo gập ghềnh / Dễ đi khó về nghĩa tình thủy chung.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 70,
+                                    "word": "Ngõ nhỏ",
+                                    "meaning": "Đường nhỏ dẫn vào các hộ gia đình.",
+                                    "context": "Ngõ nhỏ rợp bóng hoa giấy mỗi độ hè về.",
+                                    "poetry": "Ngõ nhỏ quanh co rợp bóng cây / Gửi bao kỷ niệm của thơ ngây.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 71,
+                                    "word": "Hàng cau",
+                                    "meaning": "Hàng cây cau trồng trước nhà.",
+                                    "context": "Hàng cau thẳng tắp đứng soi bóng bên hiên.",
+                                    "poetry": "Đầu sân có một hàng cau / Gió đưa hương thoảng ngọt ngào làng quê.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 72,
+                                    "word": "Rặng tre",
+                                    "meaning": "Rặng tre xanh bao bọc làng quê.",
+                                    "context": "Rặng tre rì rào ru giấc ngủ trưa yên bình.",
+                                    "poetry": "Rặng tre xanh ngát đầu thôn / Che mưa che nắng giữ hồn quê hương.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 73,
+                                    "word": "Gió Lào",
+                                    "meaning": "Gió Tây Nam khô nóng đặc trưng miền Trung.",
+                                    "context": "Mùa hè có những ngày gió Lào thổi rát cả mặt đường.",
+                                    "poetry": "Gió Lào thổi rát bờ tre / Càng thương mảnh đất bốn bề nắng mưa.",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 74,
+                                    "word": "Cát trắng",
+                                    "meaning": "Bãi cát trắng mịn ven biển Hà Tĩnh.",
+                                    "context": "Bình minh lên rực rỡ trên bờ cát trắng Thiên Cầm.",
+                                    "poetry": "Cát trắng biển xanh trải dài / Thiên Cầm đón gió sớm mai rạng ngời.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 75,
+                                    "word": "Núi Hồng",
+                                    "meaning": "Dãy núi Hồng Lĩnh gắn liền với truyền thuyết và lịch sử.",
+                                    "context": "Núi Hồng xanh biếc soi bóng xuống dòng sông Lam.",
+                                    "poetry": "Non Hồng mây quyện ngàn thông / Sông Lam nước biếc mặn nồng tình quê.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 76,
+                                    "word": "Sông La",
+                                    "meaning": "Dòng sông lớn chảy qua vùng đất Hà Tĩnh.",
+                                    "context": "Dòng sông La hiền hòa bồi đắp phù sa cho đồng bãi.",
+                                    "poetry": "Sông La uốn lượn đôi bờ / Dệt nên bức tranh nên thơ quê mình.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 77,
+                                    "word": "Chè xanh",
+                                    "meaning": "Nước lá chè tươi nấu sôi, thức uống quen thuộc.",
+                                    "context": "Bát nước chè xanh chát nhẹ mà hậu vị ngọt ngào.",
+                                    "poetry": "Chén chè xanh đậm đà hương vị / Gắn kết tình thân xóm nhỏ quê nhà.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 78,
+                                    "word": "Cu đơ",
+                                    "meaning": "Đặc sản kẹo lạc mật mía bánh tráng nổi tiếng Hà Tĩnh.",
+                                    "context": "Cắn miếng kẹo cu đơ giòn tan, nhấp ngụm chè xanh thật tuyệt.",
+                                    "poetry": "Kẹo cu đơ ngọt bùi vị mật / Gửi hương quê đi khắp muôn phương.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 79,
+                                    "word": "Bánh gai",
+                                    "meaning": "Bánh làm từ bột nếp, lá gai và nhân đậu xanh, dừa.",
+                                    "context": "Bánh gai dẻo thơm vị lá gai và đỗ xanh bùi béo.",
+                                    "poetry": "Bánh gai dẻo thơm quà quê / Gói trọn tình nghĩa đi về có nhau.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 80,
+                                    "word": "Ram bánh mướt",
+                                    "meaning": "Món ăn đặc trưng kết hợp bánh mướt mềm và ram giòn.",
+                                    "context": "Ram bánh mướt nóng hổi ăn kèm rau sống và nước mắm ngon.",
+                                    "poetry": "Ram giòn hòa quyện bánh mềm / Ăn rồi nhớ mãi khó quên vị nhà.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 81,
+                                    "word": "Nhút mít non",
+                                    "meaning": "Món muối chua giòn sần sật từ mít non hoặc xơ mít.",
+                                    "context": "Bát nhút giòn giòn ăn kèm cơm trắng ngày hè rất đưa cơm.",
+                                    "poetry": "Đĩa nhút chua cay mặn mà / Đậm đà hương vị quê nhà xứ ta.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 82,
+                                    "word": "Cá trích nướng",
+                                    "meaning": "Món cá biển tươi nướng trên than hồng, thơm nức.",
+                                    "context": "Cá trích nướng chấm nước mắm gừng tỏi ăn cùng cơm nóng.",
+                                    "poetry": "Cá trích nướng thơm lừng ven biển / Đậm đà vị mặn mòi quê hương.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 83,
+                                    "word": "Tôm rảo",
+                                    "meaning": "Loại tôm nhỏ vỏ mỏng, thịt ngọt, thường kho hoặc rang.",
+                                    "context": "Tôm rảo rang khế chua thanh mát cho bữa cơm gia đình.",
+                                    "poetry": "Tôm rảo rang thơm lừng gian bếp / Ấm áp bữa cơm chiều quê nhà.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 84,
+                                    "word": "Cua đồng",
+                                    "meaning": "Cua sống ở đồng ruộng, dùng nấu canh riêu hoặc om.",
+                                    "context": "Canh cua đồng nấu rau đay mồng tơi mát lành ngày hạ.",
+                                    "poetry": "Bát canh cua đồng mát lòng / Thơm ngát hương quê ruộng đồng.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 85,
+                                    "word": "Rau muống",
+                                    "meaning": "Loại rau quen thuộc trong bữa cơm hằng ngày.",
+                                    "context": "Rau muống luộc dầm sấu hoặc chanh tỏi rất dễ ăn.",
+                                    "poetry": "Rau xanh luộc chấm mắm tương / Bữa cơm đạm bạc mà thương vô cùng.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 86,
+                                    "word": "Khoai lang",
+                                    "meaning": "Củ khoai quen thuộc, luộc hoặc nướng đều bùi ngọt.",
+                                    "context": "Bữa sáng có củ khoai lang mật bùi ngọt ấm bụng.",
+                                    "poetry": "Khoai lang luộc dẻo thơm lừng / Ấm lòng người giữa mùa đông giá lạnh.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 87,
+                                    "word": "Sắn luộc",
+                                    "meaning": "Củ sắn luộc chín, dẻo bùi, gắn với ký ức khó khăn.",
+                                    "context": "Củ sắn luộc nóng hổi chia nhau trong buổi chiều mưa.",
+                                    "poetry": "Củ sắn bùi thơm ngày thơ ấu / Nhớ mãi những ngày mưa rả rích.",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 88,
+                                    "word": "Chum sành",
+                                    "meaning": "Vật dụng gốm sành dùng đựng nước hoặc ủ tương, rượu.",
+                                    "context": "Nước mưa đựng trong chum sành luôn trong mát quanh năm.",
+                                    "poetry": "Chum sành đựng nước mưa trong / Giữ nguồn mát lành cho trong nhà.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 89,
+                                    "word": "Vại nước",
+                                    "meaning": "Vại gốm đựng nước sinh hoạt trong gia đình.",
+                                    "context": "Vại nước đặt bên hiên nhà luôn đầy ắp nước mát.",
+                                    "poetry": "Bên hiên đặt chiếc vại đầy / Nước trong mát rượi xua ngày nắng oi.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 90,
+                                    "word": "Thúng mủng",
+                                    "meaning": "Đồ đan tre nứa dùng đựng nông sản, đồ vật.",
+                                    "context": "Thúng mủng tre đan khéo léo, bền chắc của làng nghề.",
+                                    "poetry": "Nan tre đan khéo thúng mủng đầy / Gửi gắm bàn tay khéo léo người quê.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 91,
+                                    "word": "Rổ rá",
+                                    "meaning": "Dụng cụ đan bằng tre dùng vo gạo, rửa rau.",
+                                    "context": "Rổ rá tre đan sạch sẽ, thoáng khí dùng trong bếp.",
+                                    "poetry": "Rổ rá tre đan gọn gàng / Gìn giữ nét đẹp mộc mạc làng quê.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 92,
+                                    "word": "Nón lá",
+                                    "meaning": "Chiếc nón đội đầu truyền thống che nắng mưa.",
+                                    "context": "Chiếc nón lá trắng che nghiêng trên đường làng.",
+                                    "poetry": "Chiếc nón lá nghiêng che nắng sớm / Duyên dáng người quê dịu dàng.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 93,
+                                    "word": "Áo tơi",
+                                    "meaning": "Áo làm bằng lá cọ hoặc lá gồi dùng mặc đi mưa.",
+                                    "context": "Mặc áo tơi ra đồng làm việc dưới cơn mưa phùn.",
+                                    "poetry": "Áo tơi lá gồi che mưa gió / Giữ ấm đôi vai suốt tháng năm.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 94,
+                                    "word": "Bếp củi",
+                                    "meaning": "Bếp đun bằng củi khô, lửa hồng ấm áp.",
+                                    "context": "Quây quần bên bếp củi hồng trong những ngày đông lạnh.",
+                                    "poetry": "Lửa hồng bập bùng bên bếp củi / Ấm áp tình thân suốt bốn mùa.",
+                                    "image": "https://images.unsplash.com/photo-1590736969955-71cc9480175f?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 95,
+                                    "word": "Đèn dầu",
+                                    "meaning": "Đèn thắp sáng bằng dầu hỏa thời xưa.",
+                                    "context": "Dưới ánh đèn dầu vàng ấm, các bạn nhỏ chăm chỉ học bài.",
+                                    "poetry": "Ánh đèn dầu le lói đêm khuya / Ghi bao trang vở học hành chăm chỉ.",
+                                    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 96,
+                                    "word": "Câu ví",
+                                    "meaning": "Làn điệu hát đối đáp mộc mạc, trữ tình trong dân ca Ví, Giặm.",
+                                    "context": "Những câu ví mộc mạc cất lên bên bến sông, đồng ruộng.",
+                                    "poetry": "Câu ví cất lên vang đồng nội / Gửi tình thương nhớ đến muôn nơi.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 97,
+                                    "word": "Câu giặm",
+                                    "meaning": "Làn điệu kể chuyện, giãi bày tâm sự trong dân ca Ví, Giặm.",
+                                    "context": "Câu giặm trầm ấm kể bao chuyện đời, chuyện nghề sâu sắc.",
+                                    "poetry": "Câu giặm mượt mà như suối chảy / Thấm đẫm nghĩa tình đất Nghệ ta.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 98,
+                                    "word": "Hát phường vải",
+                                    "meaning": "Làn điệu hát đối đáp đặc sắc của nghề dệt vải truyền thống.",
+                                    "context": "Hát phường vải rộn ràng câu đối đáp trong đêm trăng.",
+                                    "poetry": "Tiếng thoi đưa hòa câu phường vải / Dệt nên tình nghĩa lứa đôi son sắt.",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 99,
+                                    "word": "Hát đò đưa",
+                                    "meaning": "Làn điệu hát gắn liền với những chuyến đò ngang trên sông.",
+                                    "context": "Hát đò đưa ngân nga trên mặt nước sông Lam lộng gió.",
+                                    "poetry": "Mái chèo khua nhẹ câu đò đưa / Gửi trọn niềm thương qua bến xưa.",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                        },
+                        {
+                                    "id": 100,
+                                    "word": "Chữ nghĩa",
+                                    "meaning": "Kiến thức, sự học hành, văn chương.",
+                                    "context": "Cố gắng trau dồi chữ nghĩa để dựng xây tương lai tươi sáng.",
+                                    "poetry": "Giàu sang chẳng bằng giàu chữ nghĩa / Hành trang vững bước tới tương lai.",
+                                    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+                        }
+            ],
+            "officialVideos": [
+                        {
+                                    "id": 201,
+                                    "title": "Về miền Ví, Giặm – Dân ca xứ Nghệ (HTTV)",
+                                    "category": "folksong",
+                                    "src": "https://www.youtube.com/embed/GZR7xHwydbE",
+                                    "desc": "Tiết mục trình diễn làn điệu Ví, Giặm mộc mạc của CLB Dân ca Ví, Giặm xã Xuân Giang, Nghi Xuân – Hà Tĩnh."
+                        },
+                        {
+                                    "id": 202,
+                                    "title": "Tiếng Nghệ – Hà Tĩnh: Nét độc đáo của phương ngữ miền Trung",
+                                    "category": "communication",
+                                    "src": "https://www.youtube.com/embed/xQtp4L9nw0o",
+                                    "desc": "Khám phá nét độc đáo, mộc mạc và giàu sắc thái biểu cảm của phương ngữ xứ Nghệ trong đời sống."
+                        },
+                        {
+                                    "id": 203,
+                                    "title": "Dân ca Ví, Giặm Hà Tĩnh – Di sản văn hóa phi vật thể đại diện của nhân loại",
+                                    "category": "folksong",
+                                    "src": "https://www.youtube.com/embed/2-7O_Q0g2lM",
+                                    "desc": "Tìm hiểu giá trị nghệ thuật và sức sống bền bỉ của dân ca Ví, Giặm trong đời sống văn hóa cộng đồng Hà Tĩnh."
+                        },
+                        {
+                                    "id": 204,
+                                    "title": "Học tiếng Hà Tĩnh giao tiếp hằng ngày: Mô, tê, răng, rứa",
+                                    "category": "communication",
+                                    "src": "https://www.youtube.com/embed/9bZkp7q19f0",
+                                    "desc": "Hướng dẫn cách hiểu và sử dụng các từ ngữ giao tiếp quen thuộc của người Hà Tĩnh trong sinh hoạt thường ngày."
+                        },
+                        {
+                                    "id": 205,
+                                    "title": "Ví, Giặm xứ Nghệ – Âm vang hồn quê miền Trung",
+                                    "category": "folksong",
+                                    "src": "https://www.youtube.com/embed/ysz5S6PUM-U",
+                                    "desc": "Những làn điệu dân ca trữ tình, sâu lắng phản ánh tâm hồn và đời sống lao động của người dân xứ Nghệ."
+                        },
+                        {
+                                    "id": 206,
+                                    "title": "Chuyện trò bằng phương ngữ Hà Tĩnh – Mộc mạc mà thân thương",
+                                    "category": "communication",
+                                    "src": "https://www.youtube.com/embed/jNQXAC9IVRw",
+                                    "desc": "Trò chuyện, kể chuyện đời thường bằng giọng nói Hà Tĩnh gần gũi, giàu hình ảnh và sắc thái riêng."
+                        },
+                        {
+                                    "id": 207,
+                                    "title": "Gìn giữ và lan tỏa dân ca Ví, Giặm trong trường học Hà Tĩnh",
+                                    "category": "folksong",
+                                    "src": "https://www.youtube.com/embed/aqz-KE-bpKQ",
+                                    "desc": "Hoạt động đưa dân ca Ví, Giặm vào trường học giúp học sinh thêm yêu và tự hào về di sản quê hương."
+                        }
+            ],
+            "officialCommunityPosts": [
+                        {
+                                    "id": 301,
+                                    "title": "Vẻ đẹp trầm mặc của Khu di tích Ngã Ba Đồng Lộc",
+                                    "author": "Trần Minh Quân (THPT Chuyên Hà Tĩnh)",
+                                    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Đến với Hà Tĩnh, không thể không nhắc đến khu di tích lịch sử Ngã Ba Đồng Lộc - nơi ghi dấu tuổi thanh xuân anh dũng và hào hùng của các nữ thanh niên xung phong."
+                        },
+                        {
+                                    "id": 302,
+                                    "title": "Hương vị đậm đà kẹo cu đơ và nước chè xanh",
+                                    "author": "Lê Hoài Thu (THPT Phan Đình Phùng)",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Thưởng thức miếng kẹo cu đơ ngọt bùi vị mật mía gừng cay cùng bát nước chè xanh chát đượm là nét văn hóa ẩm thực không thể nào quên của người Hà Tĩnh."
+                        },
+                        {
+                                    "id": 303,
+                                    "title": "Gìn giữ tiếng quê qua từng trang từ điển số",
+                                    "author": "Nhóm nghiên cứu KHKT - Hà Tĩnh",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Mỗi từ phương ngữ như đọi, mạ, nỏ, ngái, mần đều chứa đựng ký ức gia đình và nhịp sống của người dân xứ Nghệ, cần được học sinh trẻ trân trọng và lan tỏa."
+                        },
+                        {
+                                    "id": 304,
+                                    "title": "Non Hồng sông La – Biểu tượng địa văn hóa xứ Nghệ",
+                                    "author": "Nguyễn Hoàng Nam (THPT Đức Thọ)",
+                                    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Dãy núi Hồng Lĩnh và dòng sông La không chỉ là cảnh đẹp thiên nhiên mà còn là mạch nguồn bồi đắp tinh thần hiếu học và nghĩa tình của người Hà Tĩnh."
+                        },
+                        {
+                                    "id": 305,
+                                    "title": "Biển Thiên Cầm xanh biếc và nhịp sống miền biển",
+                                    "author": "Phạm Thảo Vy (THPT Cẩm Xuyên)",
+                                    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Từ bãi cát trắng Thiên Cầm đến những phiên chợ cá sớm mai, đời sống ngư dân mang vẻ đẹp phóng khoáng, kiên cường và đậm chất miền Trung."
+                        },
+                        {
+                                    "id": 306,
+                                    "title": "Khu lưu niệm Đại thi hào Nguyễn Du – Nét son văn hóa Tiên Điền",
+                                    "author": "Đặng Minh Anh (THPT Nguyễn Du)",
+                                    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Về thăm Tiên Điền, Nghi Xuân để lắng nghe dư âm Truyện Kiều và cảm nhận chiều sâu văn hóa của vùng đất danh nhân."
+                        },
+                        {
+                                    "id": 307,
+                                    "title": "Hương cam bù Hương Sơn – Ngọt lành đất đồi quê nhà",
+                                    "author": "Trần Gia Huy (THPT Hương Sơn)",
+                                    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Cam bù Hương Sơn mọng nước, vị ngọt thanh mát là niềm tự hào nông sản của miền núi phía Tây Hà Tĩnh mỗi độ thu về."
+                        },
+                        {
+                                    "id": 308,
+                                    "title": "Tiếng mẹ ru và câu ví giặm trong ký ức tuổi thơ",
+                                    "author": "Bùi Khánh Linh (THPT Đồng Lộc)",
+                                    "image": "https://images.unsplash.com/photo-1511895468321-4335d4f7e6c3?w=600&auto=format&fit=crop&q=80",
+                                    "content": "Những lời dặn dò 'mần răng cho phải đạo' cùng làn điệu ví giặm quê hương giúp thế hệ học sinh giữ gìn cội nguồn giữa nhịp sống số hiện đại."
+                        }
+            ]
+};
+        /* EMBEDDED_DATA_END */
+
+        function getSeedVersion() {
+            return (EMBEDDED_SEED_DATA && typeof EMBEDDED_SEED_DATA.version === "number") ? EMBEDDED_SEED_DATA.version : 3;
+        }
+
+        function safeParseLocal(key, fallback) {
+            try {
+                const raw = localStorage.getItem(key);
+                if (!raw) return fallback;
+                const parsed = JSON.parse(raw);
+                if (!Array.isArray(parsed)) return fallback;
+                return parsed.length > 0 ? parsed : fallback;
+            } catch (e) {
+                return fallback;
+            }
+        }
+
+        function safeParsePendingLocal(key) {
+            try {
+                const raw = localStorage.getItem(key);
+                if (!raw) return [];
+                const parsed = JSON.parse(raw);
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        // Cập nhật dữ liệu nền nếu phiên bản mã nguồn tăng lên
+        (function syncEmbeddedVersionIfNewer() {
+            try {
+                const curVer = String(getSeedVersion());
+                const savedVer = localStorage.getItem("haTinh_seedVersion");
+                if (savedVer !== curVer) {
+                    localStorage.removeItem("haTinh_officialWords");
+                    localStorage.removeItem("haTinh_officialVideos");
+                    localStorage.removeItem("haTinh_officialCommunity");
+                    localStorage.setItem("haTinh_seedVersion", curVer);
+                }
+            } catch (e) {}
+        })();
+
+        let officialWords = safeParseLocal("haTinh_officialWords", EMBEDDED_SEED_DATA.officialWords.slice());
+        let officialVideos = safeParseLocal("haTinh_officialVideos", EMBEDDED_SEED_DATA.officialVideos.slice());
+        let officialCommunityPosts = safeParseLocal("haTinh_officialCommunity", EMBEDDED_SEED_DATA.officialCommunityPosts.slice());
+
+        let pendingWords = safeParsePendingLocal("haTinh_pendingWords");
+        let pendingVideos = safeParsePendingLocal("haTinh_pendingVideos");
+        let pendingCommunityPosts = safeParsePendingLocal("haTinh_pendingCommunity");
+
+        let isAdminMode = false;
+        let currentVideoTab = "all";
+        let currentActiveWordId = null;
+        let lastKnownDataHash = "";
+
+        function computeDataHash(obj) {
+            return JSON.stringify({
+                w: obj.officialWords || [],
+                v: obj.officialVideos || [],
+                c: obj.officialCommunityPosts || [],
+                pw: obj.pendingWords || [],
+                pv: obj.pendingVideos || [],
+                pc: obj.pendingCommunityPosts || []
+            });
+        }
+
+        function refreshAllViews() {
+            filterDictionary();
+            renderVideos();
+            renderCommunityFeed();
+            if (isAdminMode) renderAdminPanel();
+        }
+
+        function setCloudBadge(status, text) {
+            const badge = document.getElementById("cloudStatusDot");
+            const label = document.getElementById("cloudStatusText");
+            if (!badge || !label) return;
+            const dot = badge.querySelector("span");
+            if (status === "online") {
+                badge.className = "inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 flex-shrink-0";
+                if (dot) dot.className = "w-1.5 h-1.5 rounded-full bg-emerald-500";
+                label.textContent = text || "Đồng bộ MT/ĐT";
+            } else if (status === "syncing") {
+                badge.className = "inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 flex-shrink-0";
+                if (dot) dot.className = "w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping";
+                label.textContent = text || "Đang đồng bộ...";
+            } else {
+                badge.className = "inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 flex-shrink-0";
+                if (dot) dot.className = "w-1.5 h-1.5 rounded-full bg-amber-500";
+                label.textContent = text || "Cục bộ / Chờ mạng";
+            }
+        }
+
+        function getBustedUrl(url) {
+            const sep = url.includes("?") ? "&" : "?";
+            return url + sep + "_t=" + Date.now();
+        }
+
+        function buildSyncPayload() {
+            return {
+                initialized: true,
+                officialWords: officialWords,
+                officialVideos: officialVideos,
+                officialCommunityPosts: officialCommunityPosts,
+                pendingWords: pendingWords,
+                pendingVideos: pendingVideos,
+                pendingCommunityPosts: pendingCommunityPosts,
+                updatedAt: new Date().toISOString()
+            };
+        }
+
+        function applyStateObject(data, fromBroadcast) {
+            if (!data || typeof data !== "object") return false;
+            const newHash = computeDataHash(data);
+            if (newHash !== lastKnownDataHash) {
+                lastKnownDataHash = newHash;
+                if (Array.isArray(data.officialWords) && data.officialWords.length > 0) officialWords = data.officialWords;
+                if (Array.isArray(data.officialVideos) && data.officialVideos.length > 0) officialVideos = data.officialVideos;
+                if (Array.isArray(data.officialCommunityPosts) && data.officialCommunityPosts.length > 0) officialCommunityPosts = data.officialCommunityPosts;
+                if (Array.isArray(data.pendingWords)) pendingWords = data.pendingWords;
+                if (Array.isArray(data.pendingVideos)) pendingVideos = data.pendingVideos;
+                if (Array.isArray(data.pendingCommunityPosts)) pendingCommunityPosts = data.pendingCommunityPosts;
+
+                saveToLocalOnly();
+                refreshAllViews();
+                if (fromBroadcast) {
+                    showToast("Đã nhận cập nhật dữ liệu mới nhất!");
+                }
+                return true;
+            }
+            return false;
+        }
+
+        // --- 3. ĐỒNG BỘ ĐÁM MÂY & ĐA THIẾT BỊ ---
+        async function createNewCloudBucket(payload) {
+            try {
+                const res = await fetch("https://jsonblob.com/api/jsonBlob", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const locationUrl = res.headers.get("Location") || res.headers.get("location");
+                if (res.ok && locationUrl) {
+                    ACTIVE_CLOUD_API = locationUrl.replace("http://", "https://");
+                    try {
+                        localStorage.setItem("haTinh_customCloudUrl", ACTIVE_CLOUD_API);
+                        const inputEl = document.getElementById("syncEndpointInput");
+                        if (inputEl) inputEl.value = ACTIVE_CLOUD_API;
+                    } catch (e) {}
+                    return true;
+                }
+            } catch (e) {}
+            return false;
+        }
+
+        async function fetchFromCloud(isInitial = false, forceToast = false) {
+            try {
+                const response = await fetch(getBustedUrl(ACTIVE_CLOUD_API), {
+                    method: "GET",
+                    headers: { "Accept": "application/json" },
+                    cache: "no-store"
+                });
+
+                if (response.status === 404 || response.status === 400) {
+                    if (isInitial) await syncToCloud(false);
+                    return;
+                }
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && typeof data === "object" && (data.initialized || Array.isArray(data.officialWords))) {
+                        const changed = applyStateObject(data, false);
+                        if (forceToast) {
+                            showToast(changed ? "Đã kéo dữ liệu mới nhất từ đám mây!" : "Dữ liệu đã ở bản mới nhất.");
+                        }
+                        setCloudBadge("online", "Đồng bộ MT/ĐT");
+                    } else if (isInitial) {
+                        await syncToCloud(false);
+                    }
+                }
+            } catch (err) {
+                setCloudBadge("offline", "Cục bộ / Chờ mạng");
+            }
+        }
+
+        async function syncToCloud(showNotify = false) {
+            setCloudBadge("syncing", "Đang lưu...");
+            saveToLocalOnly();
+            const payload = buildSyncPayload();
+            lastKnownDataHash = computeDataHash(payload);
+
+            if (broadcastChannel) {
+                try { broadcastChannel.postMessage({ type: "SYNC_STATE", payload: payload }); } catch (e) {}
+            }
+
+            try {
+                const res = await fetch(getBustedUrl(ACTIVE_CLOUD_API), {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    cache: "no-store",
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const created = await createNewCloudBucket(payload);
+                    if (created) {
+                        setCloudBadge("online", "Đồng bộ MT/ĐT");
+                        if (showNotify) showToast("Đã tạo kênh & đồng bộ dữ liệu thành công!");
+                        return;
+                    }
+                    setCloudBadge("offline", "Cục bộ / Chờ mạng");
+                    if (showNotify) showToast("Đã lưu trên thiết bị! Bạn có thể nhấn Xuất web (index.html) hoặc cấu hình Endpoint.");
+                } else {
+                    setCloudBadge("online", "Đồng bộ MT/ĐT");
+                    if (showNotify) showToast("Đã đồng bộ dữ liệu lên đám mây!");
+                }
+            } catch (err) {
+                const created = await createNewCloudBucket(payload);
+                if (created) {
+                    setCloudBadge("online", "Đồng bộ MT/ĐT");
+                    if (showNotify) showToast("Đã đồng bộ dữ liệu lên đám mây!");
+                    return;
+                }
+                setCloudBadge("offline", "Cục bộ / Chờ mạng");
+                if (showNotify) showToast("Đã lưu dữ liệu trên trình duyệt!");
+            }
+        }
+
+        function openSyncConfigModal() {
+            const modal = document.getElementById("syncConfigModal");
+            const input = document.getElementById("syncEndpointInput");
+            if (input) input.value = ACTIVE_CLOUD_API;
+            if (modal) {
+                modal.classList.remove("hidden");
+                document.body.style.overflow = "hidden";
+            }
+        }
+
+        function closeSyncConfigModal() {
+            const modal = document.getElementById("syncConfigModal");
+            if (modal) {
+                modal.classList.add("hidden");
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        async function generateFreshCloudEndpoint() {
+            setCloudBadge("syncing", "Đang tạo kênh...");
+            const ok = await createNewCloudBucket(buildSyncPayload());
+            if (ok) {
+                const input = document.getElementById("syncEndpointInput");
+                if (input) input.value = ACTIVE_CLOUD_API;
+                setCloudBadge("online", "Đồng bộ MT/ĐT");
+                showToast("Đã tạo kênh đồng bộ mới! Sao chép link #sync hoặc URL để dùng chung trên điện thoại.");
+            } else {
+                setCloudBadge("offline", "Cục bộ / Chờ mạng");
+                showToast("Không thể tạo kênh mới lúc này. Kiểm tra lại mạng.");
+            }
+        }
+
+        async function pullFromCloudNow() {
+            setCloudBadge("syncing", "Đang kéo...");
+            await fetchFromCloud(false, true);
+        }
+
+        function copyShareableSyncLink() {
+            const base = window.location.href.split("#")[0];
+            const shareUrl = base + "#sync=" + encodeURIComponent(ACTIVE_CLOUD_API);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(shareUrl).then(function() {
+                    showToast("Đã sao chép liên kết đồng bộ #sync cho điện thoại!");
+                }).catch(function() {
+                    prompt("Sao chép liên kết đồng bộ dưới đây và mở trên điện thoại:", shareUrl);
+                });
+            } else {
+                prompt("Sao chép liên kết đồng bộ dưới đây và mở trên điện thoại:", shareUrl);
+            }
+        }
+
+        async function saveSyncConfigAndSync() {
+            const input = document.getElementById("syncEndpointInput");
+            const val = input ? input.value.trim() : "";
+            if (!val || !val.startsWith("http")) {
+                alert("Vui lòng nhập Endpoint hợp lệ (bắt đầu bằng http:// hoặc https://).");
+                return;
+            }
+            ACTIVE_CLOUD_API = val;
+            try { localStorage.setItem("haTinh_customCloudUrl", ACTIVE_CLOUD_API); } catch (e) {}
+            closeSyncConfigModal();
+            await fetchFromCloud(false, false);
+            await syncToCloud(true);
+        }
+
+        function exportStandaloneHTML() {
+            try {
+                const nextVer = getSeedVersion() + 1;
+                const seedPayload = {
+                    version: nextVer,
+                    initialized: true,
+                    updatedAt: new Date().toISOString(),
+                    officialWords: officialWords,
+                    officialVideos: officialVideos,
+                    officialCommunityPosts: officialCommunityPosts
+                };
+                const markerRegex = /\/\* EMBEDDED_DATA_START \*\/[\s\S]*?\/\* EMBEDDED_DATA_END \*\//;
+                const replacementBlock = "/* EMBEDDED_DATA_START */\n        const EMBEDDED_SEED_DATA = " + JSON.stringify(seedPayload, null, 12) + ";\n        /* EMBEDDED_DATA_END */";
+
+                let rawHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+                if (markerRegex.test(rawHtml)) {
+                    rawHtml = rawHtml.replace(markerRegex, replacementBlock);
+                }
+
+                const blob = new Blob([rawHtml], { type: "text/html;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "index.html";
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+                showToast("Đã xuất tệp index.html (v" + nextVer + ") chứa sẵn toàn bộ video & từ mới!");
+            } catch (err) {
+                alert("Không thể xuất tệp HTML: " + err.message);
+            }
+        }
+
+        function initCloudSync() {
+            if (broadcastChannel) {
+                broadcastChannel.onmessage = function(ev) {
+                    if (ev.data && ev.data.type === "SYNC_STATE" && ev.data.payload) {
+                        applyStateObject(ev.data.payload, true);
+                    }
+                };
+            }
+
+            window.addEventListener("storage", function(e) {
+                if (e.key && e.key.startsWith("haTinh_")) {
+                    officialWords = safeParseLocal("haTinh_officialWords", officialWords);
+                    officialVideos = safeParseLocal("haTinh_officialVideos", officialVideos);
+                    officialCommunityPosts = safeParseLocal("haTinh_officialCommunity", officialCommunityPosts);
+                    pendingWords = safeParsePendingLocal("haTinh_pendingWords");
+                    pendingVideos = safeParsePendingLocal("haTinh_pendingVideos");
+                    pendingCommunityPosts = safeParsePendingLocal("haTinh_pendingCommunity");
+                    refreshAllViews();
+                }
+            });
+
+            window.addEventListener("hashchange", function() {
+                const updatedEp = resolveInitialEndpoint();
+                if (updatedEp && updatedEp !== ACTIVE_CLOUD_API) {
+                    ACTIVE_CLOUD_API = updatedEp;
+                    fetchFromCloud(false, true);
+                }
+            });
+
+            fetchFromCloud(true, false);
+            setInterval(function() {
+                if (document.visibilityState === "visible") {
+                    fetchFromCloud(false, false);
+                }
+            }, 4000);
+
+            document.addEventListener("visibilitychange", function() {
+                if (document.visibilityState === "visible") {
+                    fetchFromCloud(false, false);
+                }
+            });
+            window.addEventListener("focus", function() {
+                fetchFromCloud(false, false);
+            });
+            window.addEventListener("online", function() {
+                fetchFromCloud(false, false);
+            });
+        }
+
+        function saveToLocalOnly() {
+            try {
+                localStorage.setItem("haTinh_officialWords", JSON.stringify(officialWords));
+                localStorage.setItem("haTinh_officialVideos", JSON.stringify(officialVideos));
+                localStorage.setItem("haTinh_officialCommunity", JSON.stringify(officialCommunityPosts));
+                localStorage.setItem("haTinh_pendingWords", JSON.stringify(pendingWords));
+                localStorage.setItem("haTinh_pendingVideos", JSON.stringify(pendingVideos));
+                localStorage.setItem("haTinh_pendingCommunity", JSON.stringify(pendingCommunityPosts));
+            } catch (e) {}
+        }
+
+        // --- 4. XỬ LÝ ẢNH ---
+        function getBase64Image(fileInputId, urlInputId, callback) {
+            const fileInput = document.getElementById(fileInputId);
+            const urlInput = document.getElementById(urlInputId);
+
+            if (fileInput && fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement("canvas");
+                        const MAX_WIDTH = 720;
+                        let width = img.width;
+                        let height = img.height;
+                        if (width > MAX_WIDTH) {
+                            height = Math.round((height * MAX_WIDTH) / width);
+                            width = MAX_WIDTH;
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0, width, height);
+                        callback(canvas.toDataURL("image/jpeg", 0.72));
+                    };
+                    img.onerror = function() {
+                        callback(e.target.result);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else if (urlInput && urlInput.value.trim() !== "") {
+                callback(urlInput.value.trim());
+            } else {
+                callback("https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80");
+            }
+        }
+
+        // --- 5. XUẤT / NHẬP JSON ---
+        function exportDataJSON() {
+            const dataToExport = { officialWords: officialWords, officialVideos: officialVideos, officialCommunityPosts: officialCommunityPosts, pendingWords: pendingWords, pendingVideos: pendingVideos, pendingCommunityPosts: pendingCommunityPosts };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dataToExport, null, 2));
+            const downloadAnchor = document.createElement("a");
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "visef-hatinh-data.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast("Xuất tệp sao lưu JSON thành công!");
+        }
+
+        function importDataJSON(event) {
+            const reader = new FileReader();
+            if (event.target.files && event.target.files[0]) {
+                reader.readAsText(event.target.files[0], "UTF-8");
+                reader.onload = function(e) {
+                    try {
+                        const parsed = JSON.parse(e.target.result);
+                        if (Array.isArray(parsed.officialWords)) officialWords = parsed.officialWords;
+                        if (Array.isArray(parsed.officialVideos)) officialVideos = parsed.officialVideos;
+                        if (Array.isArray(parsed.officialCommunityPosts)) officialCommunityPosts = parsed.officialCommunityPosts;
+                        if (Array.isArray(parsed.pendingWords)) pendingWords = parsed.pendingWords;
+                        if (Array.isArray(parsed.pendingVideos)) pendingVideos = parsed.pendingVideos;
+                        if (Array.isArray(parsed.pendingCommunityPosts)) pendingCommunityPosts = parsed.pendingCommunityPosts;
+
+                        syncToCloud(false);
+                        refreshAllViews();
+                        showToast("Khôi phục & đồng bộ dữ liệu thành công!");
+                    } catch (err) {
+                        alert("Tệp JSON không hợp lệ!");
+                    }
+                };
+            }
+        }
+
+        function openBatchModal() {
+            document.getElementById("batchModal").classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+        }
+        function closeBatchModal() {
+            document.getElementById("batchModal").classList.add("hidden");
+            document.body.style.overflow = "auto";
+        }
+
+        function processBatchUpload() {
+            const fileInput = document.getElementById("batchFileinput");
+            if (!fileInput.files || !fileInput.files[0]) {
+                alert("Vui lòng chọn tệp JSON chứa danh sách từ vựng!");
+                return;
+            }
+            const reader = new FileReader();
+            reader.readAsText(fileInput.files[0], "UTF-8");
+            reader.onload = function(e) {
+                try {
+                    const list = JSON.parse(e.target.result);
+                    if (!Array.isArray(list)) {
+                        alert("Tệp JSON phải chứa một mảng danh sách từ vựng (Array)!");
+                        return;
+                    }
+                    let addedCount = 0;
+                    list.forEach(function(item) {
+                        if (item.word && item.meaning) {
+                            pendingWords.push({
+                                id: Date.now() + Math.floor(Math.random() * 100000),
+                                word: String(item.word).trim(),
+                                meaning: String(item.meaning).trim(),
+                                context: item.context || "Đang cập nhật ngữ cảnh...",
+                                poetry: item.poetry || "Hồn quê lắng đọng...",
+                                image: item.image || "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+                            });
+                            addedCount++;
+                        }
+                    });
+                    syncToCloud(false);
+                    closeBatchModal();
+                    showToast("Đã tải lên thành công " + addedCount + " từ vào hàng đợi duyệt!");
+                    if (isAdminMode) renderAdminPanel();
+                } catch (err) {
+                    alert("Lỗi đọc tệp JSON. Vui lòng kiểm tra lại cấu trúc tệp!");
+                }
+            };
+        }
+
+        // --- 6. PHÁT ÂM ---
+        function speakNativeWord() {
+            const wordText = document.getElementById("modalWord").textContent;
+            const meaningText = document.getElementById("modalMeaning").textContent;
+            if ("speechSynthesis" in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance("Từ địa phương: " + wordText + ". Nghĩa phổ thông là: " + meaningText);
+                utterance.lang = "vi-VN";
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+                showToast("Đang phát âm: "" + wordText + ""...");
+            } else {
+                showToast("Trình duyệt không hỗ trợ phát âm.");
+            }
+        }
+
+        // --- 7. HIỂN THỊ TỪ ĐIỂN ---
+        function renderDictionary(data) {
+            if (!data) data = officialWords;
+            const grid = document.getElementById("wordGrid");
+            const emptyState = document.getElementById("emptyState");
+            const countEl = document.getElementById("resultCount");
+
+            grid.innerHTML = "";
+            countEl.textContent = data.length + " từ";
+
+            if (data.length === 0) {
+                emptyState.classList.remove("hidden");
+                return;
+            } else {
+                emptyState.classList.add("hidden");
+            }
+
+            data.forEach(function(item) {
+                const card = document.createElement("div");
+                card.className = "bg-vintage-50 rounded-3xl border border-vintage-300 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer relative";
+                card.onclick = function() { openModal(item.id); };
+
+                const adminControls = isAdminMode ? 
+                    "<div class=\"absolute top-3 right-3 flex items-center gap-1.5\" onclick=\"event.stopPropagation()\">" +
+                        "<button type=\"button\" onclick=\"quickEditImage(" + item.id + ")\" class=\"bg-amber-500 hover:bg-amber-600 text-white text-xs w-8 h-8 rounded-full flex items-center justify-center shadow-md transition cursor-pointer\" title=\"Sửa ảnh\">" +
+                            "<i class=\"fa-solid fa-pen text-[10px]\"></i>" +
+                        "</button>" +
+                        "<button type=\"button\" onclick=\"deleteOfficialWord(" + item.id + ")\" class=\"bg-rose-600 hover:bg-rose-700 text-white text-xs w-8 h-8 rounded-full flex items-center justify-center shadow-md transition cursor-pointer\" title=\"Xóa từ này\">" +
+                            "<i class=\"fa-solid fa-trash text-[10px]\"></i>" +
+                        "</button>" +
+                    "</div>" : "";
+
+                card.innerHTML = 
+                    "<div class=\"relative h-44 overflow-hidden bg-vintage-200\">" +
+                        "<img src=\"" + item.image + "\" alt=\"" + item.word + "\" loading=\"lazy\" class=\"w-full h-full object-cover group-hover:scale-105 transition duration-500\" onerror=\"this.onerror=null;this.src=\'https://placehold.co/600x400/d1c4b0/4a3f35?text=Tieng+Ha+Tinh\';\">" +
+                        "<div class=\"absolute inset-0 bg-gradient-to-t from-vintage-900/60 via-transparent to-transparent\"></div>" +
+                        "<span class=\"absolute top-3 left-3 bg-vintage-50/90 backdrop-blur-md text-vintage-900 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider border border-vintage-300\">Phương ngữ</span>" +
+                        adminControls +
+                        "<div class=\"absolute bottom-3 left-4 right-4 flex items-center justify-between text-white\">" +
+                            "<h4 class=\"text-2xl font-extrabold tracking-tight font-serif\">" + item.word + "</h4>" +
+                            "<span class=\"w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-xs group-hover:bg-terracotta transition\">" +
+                                "<i class=\"fa-solid fa-arrow-right\"></i>" +
+                            "</span>" +
+                        "</div>" +
+                    "</div>" +
+                    "<div class=\"p-5 flex-grow flex flex-col justify-between space-y-3\">" +
+                        "<div>" +
+                            "<p class=\"text-[10px] font-bold text-vintage-700/60 uppercase tracking-wider mb-1\">Nghĩa phổ thông</p>" +
+                            "<p class=\"text-sm font-bold text-vintage-900 font-serif line-clamp-1\">" + item.meaning + "</p>" +
+                        "</div>" +
+                        "<p class=\"text-xs text-vintage-700 italic bg-vintage-100 p-2.5 rounded-xl border border-vintage-200 line-clamp-2\">\"" + item.context + "\"</p>" +
+                    "</div>";
+                grid.appendChild(card);
+            });
+        }
+
+        function quickEditImage(id) {
+            const item = officialWords.find(function(i) { return i.id === id; });
+            if (!item) return;
+            const newUrl = prompt("Nhập link ảnh mới cho từ \"" + item.word + "\":", item.image);
+            if (newUrl !== null && newUrl.trim() !== "") {
+                item.image = newUrl.trim();
+                syncToCloud(false);
+                renderDictionary();
+                if (isAdminMode) renderAdminPanel();
+                showToast("Đã cập nhật ảnh cho \"" + item.word + "\"!");
+            }
+        }
+
+        function deleteOfficialWord(id) {
+            const item = officialWords.find(function(i) { return i.id === id; });
+            if (!item) return;
+            if (confirm("Bạn có chắc chắn muốn xóa từ vựng \"" + item.word + "\" khỏi từ điển chính thức không?")) {
+                officialWords = officialWords.filter(function(i) { return i.id !== id; });
+                syncToCloud(false);
+                renderDictionary();
+                if (isAdminMode) renderAdminPanel();
+                showToast("Đã xóa từ \"" + item.word + "\" thành công.");
+            }
+        }
+
+        function filterDictionary() {
+            const searchEl = document.getElementById("searchInput");
+            const query = searchEl ? searchEl.value.toLowerCase().trim() : "";
+            if (!query) {
+                renderDictionary(officialWords);
+                return;
+            }
+            const filtered = officialWords.filter(function(item) {
+                return (item.word && item.word.toLowerCase().includes(query)) || 
+                       (item.meaning && item.meaning.toLowerCase().includes(query)) || 
+                       (item.context && item.context.toLowerCase().includes(query)) ||
+                       (item.poetry && item.poetry.toLowerCase().includes(query));
+            });
+            renderDictionary(filtered);
+        }
+
+        function openModal(id) {
+            const item = officialWords.find(function(i) { return i.id === id; });
+            if (!item) return;
+            currentActiveWordId = item.id;
+
+            document.getElementById("modalWord").textContent = item.word;
+            document.getElementById("modalMeaning").textContent = item.meaning;
+            document.getElementById("modalContext").textContent = "\"" + item.context + "\"";
+            document.getElementById("modalPoetry").textContent = item.poetry || "Đang cập nhật ca dao tục ngữ...";
+            document.getElementById("modalImage").src = item.image;
+
+            const editBtn = document.getElementById("modalEditImgBtn");
+            const delBtn = document.getElementById("modalDeleteWordBtn");
+            if (isAdminMode) {
+                editBtn.classList.remove("hidden");
+                delBtn.classList.remove("hidden");
+            } else {
+                editBtn.classList.add("hidden");
+                delBtn.classList.add("hidden");
+            }
+
+            document.getElementById("detailModal").classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+        }
+
+        function promptEditImageFromModal() {
+            const item = officialWords.find(function(i) { return i.id === currentActiveWordId; });
+            if (!item) return;
+            const newUrl = prompt("Nhập link ảnh mới cho từ \"" + item.word + "\":", item.image);
+            if (newUrl !== null && newUrl.trim() !== "") {
+                item.image = newUrl.trim();
+                document.getElementById("modalImage").src = item.image;
+                syncToCloud(false);
+                renderDictionary();
+                if (isAdminMode) renderAdminPanel();
+                showToast("Cập nhật ảnh thành công!");
+            }
+        }
+
+        function promptDeleteWordFromModal() {
+            closeModal();
+            deleteOfficialWord(currentActiveWordId);
+        }
+
+        function closeModal() {
+            document.getElementById("detailModal").classList.add("hidden");
+            document.body.style.overflow = "auto";
+        }
+
+        // --- SUBMIT TỪ MỚI ---
+        function openAddModal() {
+            document.getElementById("singleWordForm").reset();
+            document.getElementById("contributeModal").classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+        }
+        function closeAddModal() {
+            document.getElementById("contributeModal").classList.add("hidden");
+            document.body.style.overflow = "auto";
+        }
+
+        function submitNewWord(e) {
+            e.preventDefault();
+            getBase64Image("contribImageFile", "contribImage", function(finalImageSrc) {
+                const newWordObj = {
+                    id: Date.now(),
+                    word: document.getElementById("contribWord").value.trim(),
+                    meaning: document.getElementById("contribMeaning").value.trim(),
+                    image: finalImageSrc,
+                    context: document.getElementById("contribContext").value.trim() || "Đang cập nhật ngữ cảnh...",
+                    poetry: document.getElementById("contribPoetry").value.trim() || "Hồn quê lắng đọng qua câu ca dao..."
+                };
+
+                pendingWords.push(newWordObj);
+                syncToCloud(false);
+                closeAddModal();
+                showToast("Đã gửi đóng góp! Đang chờ Admin phê duyệt.");
+                if (isAdminMode) renderAdminPanel();
+            });
+        }
+
+        // --- VIDEO & CỘNG ĐỒNG ---
+        function convertYouTubeEmbed(url) {
+            if (!url) return "";
+            let embed = url.trim();
+            if (embed.includes("youtube.com/shorts/")) {
+                const id = embed.split("youtube.com/shorts/")[1].split(/[?&/]/)[0];
+                return "https://www.youtube.com/embed/" + id;
+            }
+            if (embed.includes("watch?v=")) {
+                const id = embed.split("watch?v=")[1].split("&")[0];
+                return "https://www.youtube.com/embed/" + id;
+            }
+            if (embed.includes("youtu.be/")) {
+                const id = embed.split("youtu.be/")[1].split(/[?&/]/)[0];
+                return "https://www.youtube.com/embed/" + id;
+            }
+            return embed;
+        }
+
+        function switchVideoTab(tab) {
+            currentVideoTab = tab;
+            ["all", "communication", "folksong"].forEach(function(t) {
+                const btn = document.getElementById("tabVid" + (t === "all" ? "All" : (t === "communication" ? "Comm" : "Song")));
+                btn.className = (t === tab) ? "px-3.5 py-1.5 rounded-xl text-xs font-bold bg-terracotta text-white shadow cursor-pointer" : "px-3.5 py-1.5 rounded-xl text-xs font-bold bg-vintage-200 text-vintage-800 hover:bg-vintage-300 cursor-pointer";
+            });
+            renderVideos();
+        }
+
+        function renderVideos() {
+            const grid = document.getElementById("videoGrid");
+            grid.innerHTML = "";
+            let filtered = currentVideoTab === "all" ? officialVideos : officialVideos.filter(function(v) { return v.category === currentVideoTab; });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = "<div class=\"col-span-full text-center py-10 text-vintage-700 italic text-xs\">Chưa có video tư liệu nào.</div>";
+                return;
+            }
+
+            filtered.forEach(function(vid) {
+                const card = document.createElement("div");
+                card.className = "bg-vintage-100 rounded-3xl overflow-hidden border border-vintage-300 shadow-sm flex flex-col justify-between";
+                const embed = convertYouTubeEmbed(vid.src);
+                const delBtnHtml = isAdminMode ? "<button type=\"button\" onclick=\"deleteOfficialVideo(" + vid.id + ")\" class=\"bg-rose-600 hover:bg-rose-700 text-white text-xs w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 cursor-pointer\" title=\"Xóa video\"><i class=\"fa-solid fa-trash text-[10px]\"></i></button>" : "";
+                const badgeClass = vid.category === "communication" ? "bg-sage text-white" : "bg-amber-600 text-white";
+                const badgeText = vid.category === "communication" ? "Giao tiếp" : "Ví Giặm";
+
+                card.innerHTML = 
+                    "<div class=\"relative aspect-video bg-black\"><iframe src=\"" + embed + "\" loading=\"lazy\" class=\"w-full h-full\" frameborder=\"0\" allowfullscreen></iframe></div>" +
+                    "<div class=\"p-5 space-y-2 flex justify-between items-start gap-2\">" +
+                        "<div>" +
+                            "<span class=\"inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider " + badgeClass + "\">" + badgeText + "</span>" +
+                            "<h4 class=\"font-serif font-bold text-base text-vintage-900 line-clamp-1 mt-1\">" + vid.title + "</h4>" +
+                            "<p class=\"text-xs text-vintage-700 italic line-clamp-2 mt-1\">" + vid.desc + "</p>" +
+                        "</div>" +
+                        delBtnHtml +
+                    "</div>";
+                grid.appendChild(card);
+            });
+        }
+
+        function openVideoModal() { document.getElementById("videoForm").reset(); document.getElementById("videoModal").classList.remove("hidden"); document.body.style.overflow = "hidden"; }
+        function closeVideoModal() { document.getElementById("videoModal").classList.add("hidden"); document.body.style.overflow = "auto"; }
+
+        function submitNewVideo(e) {
+            e.preventDefault();
+            const newVid = {
+                id: Date.now(),
+                title: document.getElementById("vidTitle").value.trim(),
+                category: document.getElementById("vidCategory").value,
+                src: document.getElementById("vidUrl").value.trim(),
+                desc: document.getElementById("vidDesc").value.trim() || "Đang cập nhật mô tả văn hóa..."
+            };
+            pendingVideos.push(newVid);
+            syncToCloud(false);
+            closeVideoModal();
+            showToast("Đã gửi video chờ Admin phê duyệt!");
+            if (isAdminMode) renderAdminPanel();
+        }
+
+        function renderCommunityFeed() {
+            const grid = document.getElementById("communityFeedGrid");
+            grid.innerHTML = "";
+            if (officialCommunityPosts.length === 0) {
+                grid.innerHTML = "<div class=\"col-span-full text-center py-10 text-vintage-700 italic text-xs\">Chưa có bài viết văn hóa nào.</div>";
+                return;
+            }
+            officialCommunityPosts.forEach(function(post) {
+                const card = document.createElement("div");
+                card.className = "bg-vintage-100 rounded-3xl overflow-hidden border border-vintage-300 shadow-sm flex flex-col justify-between";
+                card.innerHTML = 
+                    "<div class=\"relative h-48 bg-vintage-200\"><img src=\"" + post.image + "\" loading=\"lazy\" class=\"w-full h-full object-cover\" onerror=\"this.onerror=null;this.src=\'https://placehold.co/600x400/d1c4b0/4a3f35?text=Ha+Tinh\';\"></div>" +
+                    "<div class=\"p-5 space-y-2\">" +
+                        "<span class=\"text-[11px] font-semibold text-terracotta\"><i class=\"fa-solid fa-user-pen mr-1\"></i> " + post.author + "</span>" +
+                        "<h4 class=\"font-serif font-bold text-base text-vintage-900 line-clamp-1\">" + post.title + "</h4>" +
+                        "<p class=\"text-xs text-vintage-700 line-clamp-3\">" + post.content + "</p>" +
+                    "</div>";
+                grid.appendChild(card);
+            });
+        }
+
+        function openCommunityModal() { document.getElementById("communityForm").reset(); document.getElementById("communityModal").classList.remove("hidden"); document.body.style.overflow = "hidden"; }
+        function closeCommunityModal() { document.getElementById("communityModal").classList.add("hidden"); document.body.style.overflow = "auto"; }
+
+        function submitNewCommunityPost(e) {
+            e.preventDefault();
+            getBase64Image("commImageFile", "commImage", function(imgSrc) {
+                const newPost = {
+                    id: Date.now(),
+                    title: document.getElementById("commTitle").value.trim(),
+                    author: document.getElementById("commAuthor").value.trim(),
+                    image: imgSrc,
+                    content: document.getElementById("commContent").value.trim()
+                };
+                pendingCommunityPosts.push(newPost);
+                syncToCloud(false);
+                closeCommunityModal();
+                showToast("Đã gửi bài viết chờ Admin duyệt!");
+                if (isAdminMode) renderAdminPanel();
+            });
+        }
+
+        // --- QUẢN TRỊ ADMIN ---
+        function toggleAdminMode() {
+            const roleLabel = document.getElementById("roleLabel");
+            const toggleBtn = document.getElementById("adminToggleBtn");
+            const panel = document.getElementById("adminPanelSection");
+            const noticeBar = document.getElementById("adminNoticeBar");
+            const editNotice = document.getElementById("adminImageEditNotice");
+
+            if (!isAdminMode) {
+                const pwd = prompt("🔒 Nhập mật khẩu quản trị viên:");
+                if (pwd === "AdminHaTinh2026") {
+                    isAdminMode = true;
+                    roleLabel.textContent = "Chế độ: Chủ sở hữu (Admin)";
+                    roleLabel.className = "hidden md:inline font-bold text-terracotta";
+                    toggleBtn.textContent = "Thoát Admin";
+                    toggleBtn.className = "bg-terracotta text-white px-2.5 py-1 rounded-lg font-bold transition cursor-pointer";
+                    panel.classList.remove("hidden");
+                    editNotice.classList.remove("hidden");
+                    if (pendingWords.length > 0 || pendingVideos.length > 0 || pendingCommunityPosts.length > 0) noticeBar.classList.remove("hidden");
+                    renderAdminPanel();
+                    renderDictionary();
+                    renderVideos();
+                    showToast("🔓 Đăng nhập Admin thành công!");
+                } else if (pwd !== null) {
+                    showToast("❌ Sai mật khẩu!");
+                }
+            } else {
+                isAdminMode = false;
+                roleLabel.textContent = "Chế độ: Người dùng";
+                roleLabel.className = "hidden md:inline font-semibold text-vintage-800";
+                toggleBtn.textContent = "Admin";
+                toggleBtn.className = "bg-vintage-800 text-vintage-50 px-2.5 py-1 rounded-lg font-bold hover:bg-vintage-900 transition cursor-pointer";
+                panel.classList.add("hidden");
+                editNotice.classList.add("hidden");
+                noticeBar.classList.add("hidden");
+                renderDictionary();
+                renderVideos();
+                showToast("🔒 Đã thoát chế độ Admin.");
+            }
+        }
+
+        function renderAdminPanel() {
+            const container = document.getElementById("pendingListContainer");
+            const noMsg = document.getElementById("noPendingMsg");
+            const badge = document.getElementById("pendingCountBadge");
+            const noticeBar = document.getElementById("adminNoticeBar");
+            const adminWordList = document.getElementById("adminWordListContainer");
+            const adminVideoList = document.getElementById("adminVideoListContainer");
+            const adminCommList = document.getElementById("adminCommunityListContainer");
+
+            container.innerHTML = "";
+            const total = pendingWords.length + pendingVideos.length + pendingCommunityPosts.length;
+            badge.textContent = total + " chờ duyệt";
+
+            if (total > 0) {
+                noMsg.classList.add("hidden");
+                if (isAdminMode) noticeBar.classList.remove("hidden");
+            } else {
+                noMsg.classList.remove("hidden");
+                noticeBar.classList.add("hidden");
+            }
+
+            pendingWords.forEach(function(item) {
+                const div = document.createElement("div");
+                div.className = "bg-white border border-vintage-300 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm";
+                div.innerHTML = 
+                    "<div class=\"flex items-center space-x-3\">" +
+                        "<img src=\"" + item.image + "\" class=\"w-14 h-14 rounded-xl object-cover\">" +
+                        "<div><span class=\"text-[10px] bg-vintage-200 px-2 py-0.5 rounded font-bold\">Từ vựng</span><h4 class=\"font-serif font-bold text-lg text-vintage-900\">" + item.word + "</h4><p class=\"text-xs text-vintage-700\">Nghĩa: " + item.meaning + "</p></div>" +
+                    "</div>" +
+                    "<div class=\"flex space-x-2 self-end sm:self-auto\">" +
+                        "<button type=\"button\" onclick=\"approveWord(" + item.id + ")\" class=\"bg-emerald-600 text-white text-xs font-semibold px-3.5 py-2 rounded-xl cursor-pointer\">Phê duyệt</button>" +
+                        "<button type=\"button\" onclick=\"rejectWord(" + item.id + ")\" class=\"bg-rose-600 text-white text-xs font-semibold px-3.5 py-2 rounded-xl cursor-pointer\">Từ chối</button>" +
+                    "</div>";
+                container.appendChild(div);
+            });
+
+            pendingVideos.forEach(function(item) {
+                const div = document.createElement("div");
+                div.className = "bg-white border border-vintage-300 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm";
+                div.innerHTML = 
+                    "<div><span class=\"text-[10px] bg-amber-600 text-white px-2 py-0.5 rounded font-bold\">Video YouTube</span><h4 class=\"font-serif font-bold text-base text-vintage-900 mt-1\">" + item.title + "</h4><p class=\"text-[11px] text-vintage-600 truncate max-w-xs\">" + item.src + "</p></div>" +
+                    "<div class=\"flex space-x-2 self-end sm:self-auto\">" +
+                        "<button type=\"button\" onclick=\"approveVideo(" + item.id + ")\" class=\"bg-emerald-600 text-white text-xs font-semibold px-3.5 py-2 rounded-xl cursor-pointer\">Phê duyệt</button>" +
+                        "<button type=\"button\" onclick=\"rejectVideo(" + item.id + ")\" class=\"bg-rose-600 text-white text-xs font-semibold px-3.5 py-2 rounded-xl cursor-pointer\">Từ chối</button>" +
+                    "</div>";
+                container.appendChild(div);
+            });
+
+            pendingCommunityPosts.forEach(function(item) {
+                const div = document.createElement("div");
+                div.className = "bg-white border border-vintage-300 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm";
+                div.innerHTML = 
+                    "<div class=\"flex items-center space-x-3\"><img src=\"" + item.image + "\" class=\"w-14 h-14 rounded-xl object-cover\"><div><span class=\"text-[10px] bg-sage text-white px-2 py-0.5 rounded font-bold\">Bài viết</span><h4 class=\"font-serif font-bold text-base text-vintage-900\">" + item.title + "</h4></div></div>" +
+                    "<div class=\"flex space-x-2 self-end sm:self-auto\">" +
+                        "<button type=\"button\" onclick=\"approveCommunity(" + item.id + ")\" class=\"bg-emerald-600 text-white text-xs font-semibold px-3.5 py-2 rounded-xl cursor-pointer\">Phê duyệt</button>" +
+                        "<button type=\"button\" onclick=\"rejectCommunity(" + item.id + ")\" class=\"bg-rose-600 text-white text-xs font-semibold px-3.5 py-2 rounded-xl cursor-pointer\">Từ chối</button>" +
+                    "</div>";
+                container.appendChild(div);
+            });
+
+            adminWordList.innerHTML = officialWords.length === 0 ? "<p class=\"text-xs italic\">Không có từ vựng.</p>" : "";
+            officialWords.forEach(function(w) {
+                adminWordList.innerHTML += "<div class=\"bg-white border p-3 rounded-xl flex justify-between items-center text-xs gap-2\"><span><b>" + w.word + "</b> - " + w.meaning + "</span><button type=\"button\" onclick=\"deleteOfficialWord(" + w.id + ")\" class=\"bg-rose-600 text-white px-3 py-1.5 rounded-lg flex-shrink-0 cursor-pointer\">Xóa từ</button></div>";
+            });
+
+            adminVideoList.innerHTML = officialVideos.length === 0 ? "<p class=\"text-xs italic\">Không có video.</p>" : "";
+            officialVideos.forEach(function(vid) {
+                adminVideoList.innerHTML += "<div class=\"bg-white border p-3 rounded-xl flex justify-between items-center text-xs gap-2\"><span><b>" + vid.title + "</b></span><button type=\"button\" onclick=\"deleteOfficialVideo(" + vid.id + ")\" class=\"bg-rose-600 text-white px-3 py-1.5 rounded-lg flex-shrink-0 cursor-pointer\">Xóa</button></div>";
+            });
+
+            adminCommList.innerHTML = officialCommunityPosts.length === 0 ? "<p class=\"text-xs italic\">Không có bài viết.</p>" : "";
+            officialCommunityPosts.forEach(function(post) {
+                adminCommList.innerHTML += "<div class=\"bg-white border p-3 rounded-xl flex justify-between items-center text-xs gap-2\"><span><b>" + post.title + "</b></span><button type=\"button\" onclick=\"deleteOfficialCommunity(" + post.id + ")\" class=\"bg-rose-600 text-white px-3 py-1.5 rounded-lg flex-shrink-0 cursor-pointer\">Xóa</button></div>";
+            });
+        }
+
+        function approveWord(id) { 
+            const i = pendingWords.findIndex(function(x) { return x.id === id; }); 
+            if (i !== -1) { 
+                officialWords.unshift(pendingWords.splice(i, 1)[0]); 
+                syncToCloud(false);
+                renderDictionary(); 
+                renderAdminPanel(); 
+                showToast("Đã duyệt từ vựng thành công!"); 
+            } 
+        }
+        function rejectWord(id) { const i = pendingWords.findIndex(function(x) { return x.id === id; }); if (i !== -1) { pendingWords.splice(i, 1); syncToCloud(false); renderAdminPanel(); showToast("Đã từ chối."); } }
+        
+        function approveVideo(id) { 
+            const i = pendingVideos.findIndex(function(x) { return x.id === id; }); 
+            if (i !== -1) { 
+                officialVideos.unshift(pendingVideos.splice(i, 1)[0]); 
+                syncToCloud(false);
+                renderVideos(); 
+                renderAdminPanel(); 
+                showToast("Đã duyệt video thành công!"); 
+            } 
+        }
+        function rejectVideo(id) { const i = pendingVideos.findIndex(function(x) { return x.id === id; }); if (i !== -1) { pendingVideos.splice(i, 1); syncToCloud(false); renderAdminPanel(); showToast("Đã từ chối video."); } }
+        
+        function approveCommunity(id) { const i = pendingCommunityPosts.findIndex(function(x) { return x.id === id; }); if (i !== -1) { officialCommunityPosts.unshift(pendingCommunityPosts.splice(i, 1)[0]); syncToCloud(false); renderCommunityFeed(); renderAdminPanel(); showToast("Đã duyệt bài viết!"); } }
+        function rejectCommunity(id) { const i = pendingCommunityPosts.findIndex(function(x) { return x.id === id; }); if (i !== -1) { pendingCommunityPosts.splice(i, 1); syncToCloud(false); renderAdminPanel(); showToast("Đã từ chối bài viết."); } }
+
+        function deleteOfficialVideo(id) { 
+            if (confirm("Bạn có chắc chắn muốn xóa video này không?")) { 
+                officialVideos = officialVideos.filter(function(v) { return v.id !== id; }); 
+                syncToCloud(false);
+                renderVideos(); 
+                renderAdminPanel(); 
+                showToast("Đã xóa video."); 
+            } 
+        }
+        function deleteOfficialCommunity(id) { if (confirm("Xóa bài viết này?")) { officialCommunityPosts = officialCommunityPosts.filter(function(p) { return p.id !== id; }); syncToCloud(false); renderCommunityFeed(); renderAdminPanel(); showToast("Đã xóa bài viết."); } }
+
+        function scrollToAdminPanel() { document.getElementById("adminPanelSection").scrollIntoView({ behavior: "smooth" }); }
+        function showToast(msg) {
+            const t = document.getElementById("toast");
+            document.getElementById("toastMsg").textContent = msg;
+            t.classList.remove("translate-y-24", "opacity-0");
+            setTimeout(function() { t.classList.add("translate-y-24", "opacity-0"); }, 3500);
+        }
+
+        // --- 8. MINI-GAMES ---
+        let currentGameMode = "multipleChoice";
+        let mcqIndex = 0, mcqScore = 0, mcqAnswered = false;
+        const mcqData = [
+            { q: "Từ \'Đọi\' trong phương ngữ Hà Tĩnh có nghĩa là gì?", options: ["Cái bát ăn cơm", "Cái nồi đất", "Cái rá vo gạo", "Cái chum nước"], correct: 0 },
+            { q: "Phó từ \'Nỏ\' dùng rất phổ biến mang ý nghĩa là gì?", options: ["Có", "Đẹp", "Không", "Nhiều"], correct: 2 },
+            { q: "Từ \'Ngái\' được người Hà Tĩnh dùng để chỉ điều gì?", options: ["Gần gũi", "Xa xôi", "To lớn", "Nhỏ bé"], correct: 1 },
+            { q: "Từ \'Trốc cúi\' chỉ bộ phận nào trên cơ thể con người?", options: ["Đầu", "Đầu gối", "Bàn chân", "Khuỷu tay"], correct: 1 },
+            { q: "Từ \'Mấn\' dùng để chỉ trang phục truyền thống nào?", options: ["Khăn đóng", "Áo dài", "Váy", "Quần thụng"], correct: 2 }
+        ];
+
+        let fillIndex = 0, fillScore = 0;
+        const fillData = [
+            { sentence: "Hắn có biết chi mô mà hỏi, ______ nói năng chi cả.", answer: "nỏ", hint: "Từ phủ định đặc trưng xứ Nghệ (nghĩa là \'không\')" },
+            { sentence: "Đưa cái ______ mạ múc canh cu nớ ăn cơm nựa!", answer: "đọi", hint: "Vật dụng dùng để đựng cơm (nghĩa là \'bát\')" },
+            { sentence: "Nhà ở ______ rứa mà chiều mô nỏ rảnh rỗi ghé chơi.", answer: "ngái", hint: "Chỉ khoảng cách địa lý xa xôi" },
+            { sentence: "Mạ mặc cái ______ sồi đi hội làng từ sớm.", answer: "mấn", hint: "Trang phục truyền thống che thân của phụ nữ xưa (váy)" }
+        ];
+
+        let unscrambleIndex = 0, unscrambleScore = 0;
+        const unscrambleData = [
+            { scrambled: "Ọ I Đ", correct: "đọi", meaning: "Cái bát ăn cơm" },
+            { scrambled: "Ỏ N", correct: "nỏ", meaning: "Không (từ phủ định)" },
+            { scrambled: "Á G N", correct: "ngái", meaning: "Xa xôi" },
+            { scrambled: "Ấ M N", correct: "mấn", meaning: "Váy truyền thống" }
+        ];
+
+        function switchGameMode(m) {
+            currentGameMode = m;
+            ["multipleChoice", "fillBlank", "unscramble"].forEach(function(mode) {
+                const btn = document.getElementById("tab" + mode.charAt(0).toUpperCase() + mode.slice(1));
+                if (mode === m) {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-terracotta text-white shadow cursor-pointer";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-bold transition bg-vintage-700 text-vintage-200 hover:bg-vintage-600 cursor-pointer";
+                }
+            });
+            loadCurrentGame();
+        }
+
+        function loadCurrentGame() {
+            if (currentGameMode === "multipleChoice") renderMCQ();
+            else if (currentGameMode === "fillBlank") renderFillBlank();
+            else if (currentGameMode === "unscramble") renderUnscramble();
+        }
+
+        function renderMCQ() {
+            const box = document.getElementById("gameActiveBox");
+            if (mcqIndex >= mcqData.length) mcqIndex = 0;
+            const item = mcqData[mcqIndex];
+            mcqAnswered = false;
+
+            const optionsHtml = item.options.map(function(opt, idx) {
+                return "<button type=\"button\" onclick=\"checkMCQAnswer(" + idx + ", " + item.correct + ")\" class=\"w-full text-left bg-vintage-100 hover:bg-vintage-200 border border-vintage-300 p-3 rounded-xl text-xs font-semibold text-vintage-900 flex justify-between items-center transition cursor-pointer\">" +
+                    "<span>" + opt + "</span>" +
+                    "<i class=\"fa-regular fa-circle text-vintage-400\"></i>" +
+                "</button>";
+            }).join("");
+
+            box.innerHTML = 
+                "<div class=\"flex justify-between items-center text-xs font-bold text-vintage-600 mb-3\">" +
+                    "<span>Trắc nghiệm nghĩa từ • Câu " + (mcqIndex + 1) + "/" + mcqData.length + "</span>" +
+                    "<span class=\"bg-sage text-white px-3 py-1 rounded-lg\">Điểm: " + mcqScore + "</span>" +
+                "</div>" +
+                "<h4 class=\"text-base font-serif font-bold text-vintage-900 mb-4\">" + item.q + "</h4>" +
+                "<div id=\"mcqOptions\" class=\"space-y-2.5\">" + optionsHtml + "</div>" +
+                "<div id=\"gameFeedback\" class=\"hidden mt-4 p-3 rounded-xl text-xs font-semibold\"></div>" +
+                "<button type=\"button\" id=\"gameNextBtn\" onclick=\"mcqIndex++; loadCurrentGame();\" class=\"hidden mt-4 w-full bg-terracotta hover:bg-terracotta-dark text-white text-xs font-bold py-3 rounded-xl transition shadow cursor-pointer\">" +
+                    "Câu tiếp theo <i class=\"fa-solid fa-arrow-right ml-1\"></i>" +
+                "</button>";
+        }
+
+        function checkMCQAnswer(sel, cor) {
+            if (mcqAnswered) return;
+            mcqAnswered = true;
+            const fb = document.getElementById("gameFeedback");
+            fb.classList.remove("hidden");
+            const btns = document.getElementById("mcqOptions").children;
+
+            if (sel === cor) {
+                mcqScore += 10;
+                btns[sel].className = "w-full text-left bg-emerald-100 border border-emerald-500 text-emerald-900 p-3 rounded-xl text-xs font-semibold flex justify-between items-center";
+                btns[sel].querySelector("i").className = "fa-solid fa-circle-check text-emerald-600";
+                fb.className = "mt-4 p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200";
+                fb.innerHTML = "<i class=\"fa-solid fa-check mr-1\"></i> Chính xác tuyệt vời! +10 điểm.";
+            } else {
+                btns[sel].className = "w-full text-left bg-rose-100 border border-rose-500 text-rose-900 p-3 rounded-xl text-xs font-semibold flex justify-between items-center";
+                btns[sel].querySelector("i").className = "fa-solid fa-circle-xmark text-rose-600";
+                btns[cor].className = "w-full text-left bg-emerald-100 border border-emerald-500 text-emerald-900 p-3 rounded-xl text-xs font-semibold flex justify-between items-center";
+                btns[cor].querySelector("i").className = "fa-solid fa-circle-check text-emerald-600";
+                fb.className = "mt-4 p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200";
+                fb.innerHTML = "<i class=\"fa-solid fa-xmark mr-1\"></i> Chưa chính xác. Đáp án đúng là: <b>" + mcqData[mcqIndex].options[cor] + "</b>";
+            }
+            document.getElementById("gameNextBtn").classList.remove("hidden");
+        }
+
+        function renderFillBlank() {
+            const box = document.getElementById("gameActiveBox");
+            if (fillIndex >= fillData.length) fillIndex = 0;
+            const item = fillData[fillIndex];
+
+            box.innerHTML = 
+                "<div class=\"flex justify-between items-center text-xs font-bold text-vintage-600 mb-3\">" +
+                    "<span>Điền phương ngữ • Câu " + (fillIndex + 1) + "/" + fillData.length + "</span>" +
+                    "<span class=\"bg-sage text-white px-3 py-1 rounded-lg\">Điểm: " + fillScore + "</span>" +
+                "</div>" +
+                "<div class=\"space-y-4 my-4\">" +
+                    "<p class=\"text-sm font-serif font-bold text-vintage-900 bg-vintage-100 p-4 rounded-2xl border border-vintage-300 leading-relaxed\">\"" + item.sentence + "\"</p>" +
+                    "<p class=\"text-xs text-vintage-700 italic\"><i class=\"fa-solid fa-lightbulb text-amber-600 mr-1\"></i> Gợi ý: " + item.hint + "</p>" +
+                "</div>" +
+                "<div class=\"flex gap-2 pt-2\">" +
+                    "<input type=\"text\" id=\"fillAnsInput\" placeholder=\"Nhập từ phương ngữ...\" class=\"bg-white border border-vintage-300 rounded-xl px-4 py-2.5 text-xs flex-grow focus:outline-none focus:ring-2 focus:ring-terracotta text-vintage-900\" onkeydown=\"if(event.key === \'Enter\') checkFillAnswer()\">" +
+                    "<button type=\"button\" onclick=\"checkFillAnswer()\" class=\"bg-terracotta hover:bg-terracotta-dark text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow cursor-pointer\">Kiểm tra</button>" +
+                "</div>" +
+                "<div id=\"fillFeedback\" class=\"hidden mt-4 p-3 rounded-xl text-xs font-semibold\"></div>" +
+                "<button type=\"button\" id=\"fillNextBtn\" onclick=\"fillIndex++; loadCurrentGame();\" class=\"hidden mt-4 w-full bg-vintage-800 hover:bg-vintage-900 text-white text-xs font-bold py-3 rounded-xl transition cursor-pointer\">" +
+                    "Câu tiếp theo <i class=\"fa-solid fa-arrow-right ml-1\"></i>" +
+                "</button>";
+        }
+
+        function checkFillAnswer() {
+            const input = document.getElementById("fillAnsInput");
+            const userVal = input.value.trim().toLowerCase();
+            const correctVal = fillData[fillIndex].answer.toLowerCase();
+            const fb = document.getElementById("fillFeedback");
+            fb.classList.remove("hidden");
+
+            if (userVal === correctVal) {
+                fillScore += 10;
+                input.className = "bg-emerald-50 border border-emerald-500 rounded-xl px-4 py-2.5 text-xs flex-grow text-emerald-900 font-bold";
+                input.disabled = true;
+                fb.className = "mt-4 p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200";
+                fb.innerHTML = "<i class=\"fa-solid fa-check mr-1\"></i> Chính xác! Bạn đã điền đúng từ \"" + fillData[fillIndex].answer + "\". +10 điểm.";
+                document.getElementById("fillNextBtn").classList.remove("hidden");
+            } else {
+                input.className = "bg-rose-50 border border-rose-500 rounded-xl px-4 py-2.5 text-xs flex-grow text-rose-900";
+                fb.className = "mt-4 p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200";
+                fb.innerHTML = "<i class=\"fa-solid fa-xmark mr-1\"></i> Chưa chính xác, hãy thử lại! Gợi ý: từ có " + fillData[fillIndex].answer.length + " chữ cái.";
+            }
+        }
+
+        function renderUnscramble() {
+            const box = document.getElementById("gameActiveBox");
+            if (unscrambleIndex >= unscrambleData.length) unscrambleIndex = 0;
+            const item = unscrambleData[unscrambleIndex];
+
+            box.innerHTML = 
+                "<div class=\"flex justify-between items-center text-xs font-bold text-vintage-600 mb-3\">" +
+                    "<span>Giải mã chữ cái • Câu " + (unscrambleIndex + 1) + "/" + unscrambleData.length + "</span>" +
+                    "<span class=\"bg-sage text-white px-3 py-1 rounded-lg\">Điểm: " + unscrambleScore + "</span>" +
+                "</div>" +
+                "<div class=\"text-center py-6 space-y-4 bg-vintage-100 rounded-2xl border border-vintage-300\">" +
+                    "<p class=\"text-xs text-vintage-700 font-semibold uppercase tracking-wider\">Sắp xếp lại các chữ cái xáo trộn:</p>" +
+                    "<div class=\"text-3xl font-serif font-extrabold text-terracotta tracking-[0.25em] bg-white py-3 px-6 rounded-2xl shadow-inner max-w-xs mx-auto border border-vintage-200\">" +
+                        item.scrambled +
+                    "</div>" +
+                    "<p class=\"text-xs text-vintage-700 italic\">💡 Ý nghĩa: " + item.meaning + "</p>" +
+                "</div>" +
+                "<div class=\"flex gap-2 pt-4\">" +
+                    "<input type=\"text\" id=\"unscrambleInput\" placeholder=\"Nhập từ đúng...\" class=\"bg-white border border-vintage-300 rounded-xl px-4 py-2.5 text-xs flex-grow focus:outline-none focus:ring-2 focus:ring-terracotta text-vintage-900\" onkeydown=\"if(event.key === \'Enter\') checkUnscrambleAnswer()\">" +
+                    "<button type=\"button\" onclick=\"checkUnscrambleAnswer()\" class=\"bg-terracotta hover:bg-terracotta-dark text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow cursor-pointer\">Giải mã</button>" +
+                "</div>" +
+                "<div id=\"unscrambleFeedback\" class=\"hidden mt-4 p-3 rounded-xl text-xs font-semibold\"></div>" +
+                "<button type=\"button\" id=\"unscrambleNextBtn\" onclick=\"unscrambleIndex++; loadCurrentGame();\" class=\"hidden mt-4 w-full bg-vintage-800 hover:bg-vintage-900 text-white text-xs font-bold py-3 rounded-xl transition cursor-pointer\">" +
+                    "Câu tiếp theo <i class=\"fa-solid fa-arrow-right ml-1\"></i>" +
+                "</button>";
+        }
+
+        function checkUnscrambleAnswer() {
+            const input = document.getElementById("unscrambleInput");
+            const userVal = input.value.trim().toLowerCase();
+            const correctVal = unscrambleData[unscrambleIndex].correct.toLowerCase();
+            const fb = document.getElementById("unscrambleFeedback");
+            fb.classList.remove("hidden");
+
+            if (userVal === correctVal) {
+                unscrambleScore += 10;
+                input.className = "bg-emerald-50 border border-emerald-500 rounded-xl px-4 py-2.5 text-xs flex-grow text-emerald-900 font-bold";
+                input.disabled = true;
+                fb.className = "mt-4 p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200";
+                fb.innerHTML = "<i class=\"fa-solid fa-check mr-1\"></i> Chính xác! Từ đúng là \"" + unscrambleData[unscrambleIndex].correct + "\". +10 điểm.";
+                document.getElementById("unscrambleNextBtn").classList.remove("hidden");
+            } else {
+                input.className = "bg-rose-50 border border-rose-500 rounded-xl px-4 py-2.5 text-xs flex-grow text-rose-900";
+                fb.className = "mt-4 p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200";
+                fb.innerHTML = "<i class=\"fa-solid fa-xmark mr-1\"></i> Chưa chính xác. Hãy thử lại!";
+            }
+        }
+
+        function bootApplication() {
+            refreshAllViews();
+            loadCurrentGame();
+            initCloudSync();
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", bootApplication);
+        } else {
+            bootApplication();
+        }
+    </script>
+</body>
+</html>
